@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="author" content="Faluo" />
+<meta name="subject" content="法珞的备忘录" />
+<meta name="keywords" content="个人笔记+碎言碎语" />
+<meta name="description" content="简单的生活记录" />
+<title>法珞的备忘录</title>
+<link rel="shortcut icon" href="s64.jpg" />
+<link rel="apple-touch-icon" href="b512.jpg" />
+<link type="text/css" href="css/mafuyu_wiki.css" rel="stylesheet" />
+<link type="text/css" href="css/page.css" rel="stylesheet" />
+<link type="text/css" href="css/prism.css" rel="stylesheet" />
+<script type='text/javascript' src='js/prism.js' ></script>
+</head>
+<body style="background-color:#FFFFFF;">
+<div class="ontop">
+<a href="index.html" class="top">法珞的备忘录</a>
+<div class="navi" onClick="location.href='about.html'">关于</div>
+<div class="navi" onClick="location.href='archive.html'">归档</div>
+<div class="navi" onClick="location.href='index.html'">首页</div>
+</div>
+<div id="main">
+<div id="content" class="content">
+<h2 class="bt">homebrew安装phpredis</h2><br/>
+(这是一篇以前博客上的笔记，现在转发到这里)<br/>
+昨天(15-10-26)在OSX下用homebrew安装phpredis，第一次接触这两个项目，边学边用。有个小地方卡了一下：我的系统是最新的10.11，PHP版本是5.5.30。在安装的最后，需要把redis.so拷到<span style="padding:3px;border:0px;border-style:solid;border-color:#B1B3BB;background-color:#EEEEEE;color:#990033;width:auto;"">/usr/lib/php/extensions/no-debug-non-zts-20121212</span>目录下（至少我机器上是这个目录）。可是我无论是用<span style="padding:3px;border:0px;border-style:solid;border-color:#B1B3BB;background-color:#EEEEEE;color:#990033;width:auto;"">cp</span>还是<span style="padding:3px;border:0px;border-style:solid;border-color:#B1B3BB;background-color:#EEEEEE;color:#990033;width:auto;"">sudo cp</span>，都会提示Operation not permitted。于是网上搜了一会，看到了这篇博客，才解决了问题：OSX常见问题列表(持续更新中...)。正如这篇博客上所说，需要<span style="padding:3px;border:0px;border-style:solid;border-color:#B1B3BB;background-color:#EEEEEE;color:#990033;width:auto;"">先关闭SIP</span>，之后再开启。操作的方法：<span style="padding:3px;border:0px;border-style:solid;border-color:#B1B3BB;background-color:#EEEEEE;color:#990033;width:auto;"">重启机器->按command+R->进入终端->输入csrutil disable就可以了(开启的命令是csrutil enable)</span>。所以在安装之前，先把SIP关闭吧。<br/>
+<br/>
+下面，正式开始安装：<br/>
+<br/>
+phpredis项目的地址是https://github.com/phpredis/phpredis，项目中详细介绍了安装方法。我为了省事，就直接先安装homebrew，之后再用它来安装了。过程很简单。<br/>
+<br/>
+0、安装homebrew：打开它的官网http://brew.sh/index_zh-cn.html，按其所述，在终端执行这条命令：<br/>
+ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"<br/>
+之后去冲杯咖啡，边喝边等安装完成就可以了。<br/>
+<br/>
+1、安装phpredis：安装好brew后，接着在终端输入brew install homebrew/php/php55-redis就可以开始安装了。也可能是我的网比较慢吧，过程有点长。所以再去冲杯咖啡边喝边等好了…<br/>
+<br/>
+2、拷贝redis.so到php扩展目录：这点我不是很明白。我觉得它应该自动帮我把redis.so这个文件拷过来的，可是它并没有。于是我自己动手好了。在我的机器上是这样的：把这个文件从<br/>
+/usr/local/Cellar/php55-redis/2.2.7_1/<br/>
+目录下拷到<br/>
+/usr/lib/php/extensions/no-debug-non-zts-20121212<br/>
+即可。<br/>
+<br/>
+3、修改php.ini：sudo vim /etc/php.ini，在其中加一行extension=redis.so。<br/>
+<br/>
+4、重启apache：sudo apachectl restart。<br/>
+<br/>
+5、去一下WC。(刚才不是连喝两杯咖啡么T_T)<br/>
+<br/>
+至此，安装结束。用phpinfo();看一下，应该能看到redis了。
+</div>
+</div>
+<div id="split-line"></div>
+<div class="onbottom">Copyright&nbsp;&copy;&nbsp;Faluo&nbsp;</div>
+</body>

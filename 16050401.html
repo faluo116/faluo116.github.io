@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="author" content="Faluo" />
+<meta name="subject" content="法珞的备忘录" />
+<meta name="keywords" content="个人笔记+碎言碎语" />
+<meta name="description" content="简单的生活记录" />
+<title>法珞的备忘录</title>
+<link rel="shortcut icon" href="s64.jpg" />
+<link rel="apple-touch-icon" href="b512.jpg" />
+<link type="text/css" href="css/mafuyu_wiki.css" rel="stylesheet" />
+<link type="text/css" href="css/page.css" rel="stylesheet" />
+<link type="text/css" href="css/prism.css" rel="stylesheet" />
+<script type='text/javascript' src='js/prism.js' ></script>
+</head>
+<body style="background-color:#FFFFFF;">
+<div class="ontop">
+<a href="index.html" class="top">法珞的备忘录</a>
+<div class="navi" onClick="location.href='about.html'">关于</div>
+<div class="navi" onClick="location.href='archive.html'">归档</div>
+<div class="navi" onClick="location.href='index.html'">首页</div>
+</div>
+<div id="main">
+<div id="content" class="content">
+<h2 class="bt">Redis笔记(一)</h2><br/>
+(这是一篇以前博客上的笔记，现在转发到这里)<br/>
+Redis官网：<a href="http://redis.io/" target="_blank" class="on-search" rel="nofollow">http://redis.io/</a>；<br/>
+介绍：<a href="https://en.wikipedia.org/wiki/Redis" target="_blank" class="on-search" rel="nofollow">redis</a>(wiki)；<br/>
+参考文档：<a href="http://redisdoc.com/" target="_blank" class="on-search" rel="nofollow">http://redisdoc.com/</a>(中文。我随便找的。)<br/>
+安装：可以自己去官网下源码make。不多废话。下面是笔记的第一部分：<br/>
+<span style="padding:3px;border:0px;border-style:solid;border-color:#B1B3BB;background-color:#EEEEEE;color:#990033;width:auto;"">注：我改了端口的。</span><br/>
+<br/>
+<h3 class="bt">值的一些加减操作</h3><br/>
+<pre class="line-numbers"><code class="language-bash">127.0.0.1:1010> set faluo 1<br/>
+OK<br/>
+127.0.0.1:1010> incrby faluo 2<br/>
+(integer) 3<br/>
+127.0.0.1:1010> get faluo<br/>
+"3"<br/>
+127.0.0.1:1010> decrby faluo 2<br/>
+(integer) 1<br/>
+</code></pre><br/>
+<br/>
+<h3 class="bt">字符串的添加与长度</h3><br/>
+<pre class="line-numbers"><code class="language-bash">127.0.0.1:1010> set key hello<br/>
+OK<br/>
+127.0.0.1:1010> append key " world"<br/>
+(integer) 11<br/>
+127.0.0.1:1010> get key <br/>
+"hello world"<br/>
+127.0.0.1:1010> strlen key<br/>
+(integer) 11<br/>
+</code></pre><br/>
+<br/>
+<h3 class="bt">散列</h3><br/>
+<pre class="line-numbers"><code class="language-bash">127.0.0.1:1010> mset faluo1 100 faluo2 200 faluo3 300<br/>
+OK<br/>
+127.0.0.1:1010> mget faluo2 faluo1 faluo3<br/>
+1) "200"<br/>
+2) "100"<br/>
+3) "300"<br/>
+</code></pre><br/>
+<pre class="line-numbers"><code class="language-bash">127.0.0.1:1010> hmset new:faluo age 30 height 172 width 172 weight 172<br/>
+OK<br/>
+127.0.0.1:1010> hmget new:faluo age width<br/>
+1) "30"<br/>
+2) "172"<br/>
+127.0.0.1:1010> hgetall new:faluo<br/>
+1) "age"<br/>
+2) "30"<br/>
+3) "height"<br/>
+4) "172"<br/>
+5) "width"<br/>
+6) "172"<br/>
+7) "weight"<br/>
+8) "172"<br/>
+</code></pre><br/>
+<br/>
+<h3 class="bt">列表(一)</h3><br/>
+需要注意<span style="padding:3px;border:0px;border-style:solid;border-color:#B1B3BB;background-color:#EEEEEE;color:#990033;width:auto;"">lrem</span>命令。它的格式是：<br/>
+<span style="padding:3px;border:0px;border-style:solid;border-color:#B1B3BB;background-color:#EEEEEE;color:#990033;width:auto;"">lrem key count value</span><br/>
+当count=0时，删除所有元素；<br/>
+当count为负数时，从右面删除count个符合的元素；<br/>
+当count为正数时，从左面删除count个符合的元素。<br/>
+<pre class="line-numbers"><code class="language-bash">127.0.0.1:1010> lpush list 1<br/>
+(integer) 1<br/>
+127.0.0.1:1010> lpush list 2 3<br/>
+(integer) 3<br/>
+127.0.0.1:1010> rpush list 5<br/>
+(integer) 4<br/>
+127.0.0.1:1010> rpush list 6<br/>
+(integer) 5<br/>
+127.0.0.1:1010> lpop list<br/>
+"3"<br/>
+127.0.0.1:1010> llen list<br/>
+(integer) 4<br/>
+127.0.0.1:1010> lrange list 0 999<br/>
+1) "2"<br/>
+2) "1"<br/>
+3) "5"<br/>
+4) "6"<br/>
+// 从右侧开始删除“5”<br/>
+127.0.0.1:1010> lrem list -1 5<br/>
+(integer) 1<br/>
+127.0.0.1:1010> lrange list 0 999<br/>
+1) "2"<br/>
+2) "1"<br/>
+3) "6"<br/>
+</code></pre><br/>
+<br/>
+<h3 class="bt">列表(二)</h3><br/>
+列表的各种插入。<br/>
+<pre class="line-numbers"><code class="language-bash">127.0.0.1:1010> lrange list 0 -1<br/>
+1) "2"<br/>
+2) "1"<br/>
+3) "6"<br/>
+127.0.0.1:1010> linsert list after 6 8<br/>
+(integer) 4<br/>
+127.0.0.1:1010> linsert list before 1 9<br/>
+(integer) 5<br/>
+127.0.0.1:1010> lrange list 0 -1<br/>
+1) "2"<br/>
+2) "9"<br/>
+3) "1"<br/>
+4) "6"<br/>
+5) "8"<br/>
+</code></pre>
+</div>
+</div>
+<div id="split-line"></div>
+<div class="onbottom">Copyright&nbsp;&copy;&nbsp;Faluo&nbsp;</div>
+</body>
