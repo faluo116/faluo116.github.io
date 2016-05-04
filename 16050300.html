@@ -23,10 +23,41 @@
 </div>
 <div id="main">
 <div id="content" class="content">
-<h2 class="bt">代码测试</h2><br/>
-<pre class="line-numbers"><code class="language-java">public static void main(String args[]){<br/>
-	System.out.println("hello world~!");<br/>
-}<br/>
+<h2 class="bt">简陋的.vimrc</h2><br/>
+<pre class="line-numbers"><code class="language-bash">set shiftwidth=4<br/>
+colors desert <br/>
+syntax on<br/>
+set tabstop=4<br/>
+set cindent shiftwidth=4<br/>
+set autoindent shiftwidth=4<br/>
+set hlsearch<br/>
+set nu<br/>
+set encoding=utf-8<br/>
+set fileencodings=utf-8,gbk,euc-jp<br/>
+set backupskip=/tmp/*,/private/tmp/*<br/>
+set laststatus=2<br/>
+set nowrap<br/>
+<br/>
+let mapleader="-"<br/>
+<br/>
+nnoremap <leader>d dd<br/>
+nnoremap <leader>ev :tab new $MYVIMRC<cr><br/>
+nnoremap <leader>sv :source $MYVIMRC<cr><br/>
+<br/>
+augroup ft_php<br/>
+	autocmd!<br/>
+	autocmd FileType php nnoremap <buffer> <leader>= I//<esc><br/>
+	autocmd FileType php :iabbrev <buffer> iff if(){<cr>}<left><esc><br/>
+	autocmd FileType php :iabbrev <buffer> forr for($i = 0 ; $i <  ; ++$i){<cr>}<left><esc><br/>
+augroup end<br/>
+<br/>
+augroup ft_py<br/>
+	autocmd!<br/>
+	autocmd FileType python nnoremap <buffer> <leader>= I#<esc><br/>
+ 	autocmd FileType python :iabbrev <buffer> pyhead #!/usr/bin/env python<cr># -*- coding: utf-8 -*-<cr><br/>
+augroup end<br/>
+<br/>
+set statusline=%=%F\ \%l/%L\ \%P\ -\ <br/>
 </code></pre>
 </div>
 </div>
