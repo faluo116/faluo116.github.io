@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="author" content="Faluo" />
+<meta name="subject" content="法珞的备忘录" />
+<meta name="keywords" content="个人笔记+碎言碎语" />
+<meta name="description" content="简单的生活记录" />
+<title>法珞的备忘录</title>
+<link rel="shortcut icon" href="s64.jpg" />
+<link rel="apple-touch-icon" href="b512.jpg" />
+<link type="text/css" href="css/mafuyu_wiki.css" rel="stylesheet" />
+<link type="text/css" href="css/page.css" rel="stylesheet" />
+<link type="text/css" href="css/prism.css" rel="stylesheet" />
+<script type='text/javascript' src='js/prism.js' ></script>
+</head>
+<body style="background-color:#FFFFFF;">
+<div class="ontop">
+<a href="index.html" class="top">法珞的备忘录</a>
+<div class="navi" onClick="location.href='about.html'">关于</div>
+<div class="navi" onClick="location.href='archive.html'">归档</div>
+<div class="navi" onClick="location.href='index.html'">首页</div>
+</div>
+<div id="main">
+<div id="content" class="content">
+<h2 class="bt">Redis笔记(三)</h2><br/>
+(这是一篇以前博客上的笔记，现在转发到这里)<br/>
+简单玩一玩redis的排序。这一部分，才真让咱感觉到redis是一款“数据库”！<br/>
+<br/>
+<h3 class="bt">SORT与GET</h3><br/>
+SORT排序：<br/>
+<pre class="line-numbers"><code class="language-bash">127.0.0.1:1010> lrange list 0 99<br/>
+1) "2"<br/>
+2) "9"<br/>
+3) "1"<br/>
+4) "6"<br/>
+127.0.0.1:1010> smembers collA<br/>
+1) "b"<br/>
+2) "a"<br/>
+3) "d"<br/>
+4) "c"<br/>
+127.0.0.1:1010> sort list desc<br/>
+1) "9"<br/>
+2) "6"<br/>
+3) "2"<br/>
+4) "1"<br/>
+127.0.0.1:1010> sort collA alpha<br/>
+1) "a"<br/>
+2) "b"<br/>
+3) "c"<br/>
+4) "d"<br/>
+127.0.0.1:1010> sort collA alpha limit 2 4 desc<br/>
+1) "b"<br/>
+2) "a"<br/>
+</code></pre><br/>
+下面，写一个稍微复杂点的例子(真的只是稍微)。平时我比较喜欢追几部新番动画看看。这一季，我打算追的有三部番，分别在周一、三、五收看。并且，自己给这三部新番打了分数。满分五分。于是，现在的情况是这样的：<br/>
+<table style="border:1px solid #000000;color:#000000;border-collapse:collapse;width:100%;"><br/>
+<tr><td style="border:1px solid #000000;color:#000000;padding:5px;">week</td><td style="border:1px solid #000000;color:#000000;padding:5px;">anime</td><td style="border:1px solid #000000;color:#000000;padding:5px;">favorite</td></tr><br/>
+<tr><td style="border:1px solid #000000;color:#000000;padding:5px;">1</td><td style="border:1px solid #000000;color:#000000;padding:5px;">终物语</td><td style="border:1px solid #000000;color:#000000;padding:5px;">5</td></tr><br/>
+<tr><td style="border:1px solid #000000;color:#000000;padding:5px;">3</td><td style="border:1px solid #000000;color:#000000;padding:5px;">绯弹的亚里亚AA</td><td style="border:1px solid #000000;color:#000000;padding:5px;">2</td></tr><br/>
+<tr><td style="border:1px solid #000000;color:#000000;padding:5px;">5</td><td style="border:1px solid #000000;color:#000000;padding:5px;">全部成为F</td><td style="border:1px solid #000000;color:#000000;padding:5px;">4</td></tr><br/>
+</table><br/>
+下面，把这张表放到redis中。<br/>
+<pre class="line-numbers"><code class="language-bash">// 番名全替换成了拼音，方便输入<br/>
+127.0.0.1:1010> set anime_1 ZhongWuYu<br/>
+OK<br/>
+127.0.0.1:1010> set anime_3 AA<br/>
+OK<br/>
+127.0.0.1:1010> set anime_5 QuanBuChengWeiF<br/>
+OK<br/>
+127.0.0.1:1010> set fav_1 5<br/>
+OK<br/>
+127.0.0.1:1010> set fav_3 2<br/>
+OK<br/>
+127.0.0.1:1010> set fav_5 4<br/>
+OK<br/>
+// 周信息是用列表保存的。事先已存好了：<br/>
+127.0.0.1:1010> lrange week 0 99<br/>
+1) "5"<br/>
+2) "3"<br/>
+3) "1"<br/>
+</code></pre><br/>
+现在，我想按自己的喜爱程度，把“周”打印出来：<br/>
+<pre class="line-numbers"><code class="language-bash">127.0.0.1:1010> sort week by fav_*<br/>
+1) "3"<br/>
+2) "5"<br/>
+3) "1"<br/>
+</code></pre><br/>
+这样输出的结果表示，我最喜欢的动画要在周一收看，其次是周五，周三。如果想把最喜欢的显示在前面，只要后面加上desc就可以了。<br/>
+看起来好像很不错，不过只显示星期，好像不太友好。要是直接把动画名字也显示出来就好了。于是稍改一下代码：<br/>
+<pre class="line-numbers"><code class="language-bash">127.0.0.1:1010> sort week by fav_* get anime_* desc<br/>
+1) "ZhongWuYu"<br/>
+2) "QuanBuChengWeiF"<br/>
+3) "AA"<br/>
+</code></pre><br/>
+这一行中的“get”，可以让我在sort排序后再get取出其它键值。get是可以写多个的。比如现在我想把动画名和我自己打的分一起取出来：<br/>
+<pre class="line-numbers"><code class="language-bash">127.0.0.1:1010> sort week by fav_* get anime_* get fav_* desc<br/>
+1) "ZhongWuYu"<br/>
+2) "5"<br/>
+3) "QuanBuChengWeiF"<br/>
+4) "4"<br/>
+5) "AA"<br/>
+6) "2"<br/>
+</code></pre><br/>
+<br/>
+<br/>
+<br/>
+
+</div>
+</div>
+<div id="split-line"></div>
+<div class="onbottom">Copyright&nbsp;&copy;&nbsp;Faluo&nbsp;</div>
+</body>

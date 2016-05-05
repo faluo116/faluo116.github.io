@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="author" content="Faluo" />
+<meta name="subject" content="法珞的备忘录" />
+<meta name="keywords" content="个人笔记+碎言碎语" />
+<meta name="description" content="简单的生活记录" />
+<title>法珞的备忘录</title>
+<link rel="shortcut icon" href="s64.jpg" />
+<link rel="apple-touch-icon" href="b512.jpg" />
+<link type="text/css" href="css/mafuyu_wiki.css" rel="stylesheet" />
+<link type="text/css" href="css/page.css" rel="stylesheet" />
+<link type="text/css" href="css/prism.css" rel="stylesheet" />
+<script type='text/javascript' src='js/prism.js' ></script>
+</head>
+<body style="background-color:#FFFFFF;">
+<div class="ontop">
+<a href="index.html" class="top">法珞的备忘录</a>
+<div class="navi" onClick="location.href='about.html'">关于</div>
+<div class="navi" onClick="location.href='archive.html'">归档</div>
+<div class="navi" onClick="location.href='index.html'">首页</div>
+</div>
+<div id="main">
+<div id="content" class="content">
+<h2 class="bt">Redis笔记(二)</h2><br/>
+(这是一篇以前博客上的笔记，现在转发到这里)<br/>
+这次补充一下上次列表中忘提的两个命令。再来简单玩一玩集合。<br/>
+<br/>
+<h3 class="bt">列表(三)</h3><br/>
+补充两个比较重要的命令：RPOPLPUSH和LLEN。<br/>
+<pre class="line-numbers"><code class="language-bash">127.0.0.1:1010> lrange list 0 999<br/>
+1) "2"<br/>
+2) "9"<br/>
+3) "1"<br/>
+4) "6"<br/>
+5) "8"<br/>
+127.0.0.1:1010> lpush list2 100 101 102 103 104 105<br/>
+(integer) 6<br/>
+127.0.0.1:1010> lrange list2 0 999<br/>
+1) "105"<br/>
+2) "104"<br/>
+3) "103"<br/>
+4) "102"<br/>
+5) "101"<br/>
+6) "100"<br/>
+127.0.0.1:1010> rpoplpush list list2<br/>
+"8"<br/>
+127.0.0.1:1010> lrange list 0 999<br/>
+1) "2"<br/>
+2) "9"<br/>
+3) "1"<br/>
+4) "6"<br/>
+127.0.0.1:1010> lrange list2 0 999<br/>
+1) "8"<br/>
+2) "105"<br/>
+3) "104"<br/>
+4) "103"<br/>
+5) "102"<br/>
+6) "101"<br/>
+7) "100"<br/>
+127.0.0.1:1010> llen list2<br/>
+(integer) 7<br/>
+</code></pre><br/>
+<h3 class="bt">集合</h3><br/>
+和列表相比，集合是<span style="color:#FF0000;font-weight:bold;"">无序，唯一</span>的(其实Redis有有序集合，不过我这里不提了。后面用sort排序好了)。它的基本添加与删除用法：<br/>
+<pre class="line-numbers"><code class="language-bash">127.0.0.1:1010> sadd coll 1 2 3 4 5 1 6<br/>
+(integer) 6<br/>
+127.0.0.1:1010> smembers coll<br/>
+1) "1"<br/>
+2) "2"<br/>
+3) "3"<br/>
+4) "4"<br/>
+5) "5"<br/>
+6) "6"<br/>
+127.0.0.1:1010> srem coll 2 4<br/>
+(integer) 2<br/>
+127.0.0.1:1010> smembers coll<br/>
+1) "1"<br/>
+2) "3"<br/>
+3) "5"<br/>
+4) "6"<br/>
+// 判断元素是否存在，存在返回1，否则返回0<br/>
+127.0.0.1:1010> sismember coll 3<br/>
+(integer) 1<br/>
+127.0.0.1:1010> sismember coll 8<br/>
+(integer) 0<br/>
+</code></pre><br/>
+<h3 class="bt">集合</h3>运算<br/>
+<pre class="line-numbers"><code class="language-bash">127.0.0.1:1010> sadd collA a b c d<br/>
+(integer) 4<br/>
+127.0.0.1:1010> sadd collB c d e f<br/>
+(integer) 4<br/>
+// 返回A中存在，但B中不存在的<br/>
+127.0.0.1:1010> sdiff collA collB<br/>
+1) "b"<br/>
+2) "a"<br/>
+// 与上面相反，返回B中存在而A中不存在的<br/>
+127.0.0.1:1010> sdiff collB collA<br/>
+1) "e"<br/>
+2) "f"<br/>
+// sdiffstore和sdiff一样，保存差集。但是它会把结果保存到collC中。<br/>
+// 如果collC已存在，会被覆盖！<br/>
+127.0.0.1:1010> sdiffstore collC collA collB<br/>
+(integer) 2<br/>
+127.0.0.1:1010> smembers collC<br/>
+1) "b"<br/>
+2) "a"<br/>
+</code></pre><br/>
+<pre class="line-numbers"><code class="language-bash">//和上面的sdiff类似。不过这次取交集。<br/>
+127.0.0.1:1010> sinter collA collB<br/>
+1) "d"<br/>
+2) "c"<br/>
+127.0.0.1:1010> sinter collB collA<br/>
+1) "d"<br/>
+2) "c"<br/>
+127.0.0.1:1010> sinterstore collC collA collB<br/>
+(integer) 2<br/>
+127.0.0.1:1010> smembers collC<br/>
+1) "c"<br/>
+2) "d"<br/>
+</code></pre><br/>
+<pre class="line-numbers"><code class="language-bash">// 元素的移动与删除。很简单，懒得写注释了。<br/>
+127.0.0.1:1010> sadd collA e<br/>
+(integer) 1<br/>
+127.0.0.1:1010> smembers collA<br/>
+1) "d"<br/>
+2) "c"<br/>
+3) "b"<br/>
+4) "a"<br/>
+5) "e"<br/>
+127.0.0.1:1010> smembers collE<br/>
+(empty list or set)<br/>
+127.0.0.1:1010> smove collA collE e<br/>
+(integer) 1<br/>
+127.0.0.1:1010> smembers collA<br/>
+1) "b"<br/>
+2) "a"<br/>
+3) "d"<br/>
+4) "c"<br/>
+127.0.0.1:1010> smembers collE<br/>
+1) "e"<br/>
+127.0.0.1:1010> srem collE e<br/>
+(integer) 1<br/>
+127.0.0.1:1010> smembers collE<br/>
+(empty list or set)<br/>
+</code></pre><br/>
+<pre class="line-numbers"><code class="language-bash">// 合并<br/>
+127.0.0.1:1010> smembers collA<br/>
+1) "b"<br/>
+2) "a"<br/>
+3) "d"<br/>
+4) "c"<br/>
+127.0.0.1:1010> smembers collB<br/>
+1) "e"<br/>
+2) "d"<br/>
+3) "c"<br/>
+4) "f"<br/>
+127.0.0.1:1010> sunion collA collB<br/>
+1) "e"<br/>
+2) "d"<br/>
+3) "f"<br/>
+4) "a"<br/>
+5) "c"<br/>
+6) "b"<br/>
+</code></pre><br/>
+<br/>
+<br/>
+
+</div>
+</div>
+<div id="split-line"></div>
+<div class="onbottom">Copyright&nbsp;&copy;&nbsp;Faluo&nbsp;</div>
+</body>

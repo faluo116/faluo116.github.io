@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="author" content="Faluo" />
+<meta name="subject" content="法珞的备忘录" />
+<meta name="keywords" content="个人笔记+碎言碎语" />
+<meta name="description" content="简单的生活记录" />
+<title>法珞的备忘录</title>
+<link rel="shortcut icon" href="s64.jpg" />
+<link rel="apple-touch-icon" href="b512.jpg" />
+<link type="text/css" href="css/mafuyu_wiki.css" rel="stylesheet" />
+<link type="text/css" href="css/page.css" rel="stylesheet" />
+<link type="text/css" href="css/prism.css" rel="stylesheet" />
+<script type='text/javascript' src='js/prism.js' ></script>
+</head>
+<body style="background-color:#FFFFFF;">
+<div class="ontop">
+<a href="index.html" class="top">法珞的备忘录</a>
+<div class="navi" onClick="location.href='about.html'">关于</div>
+<div class="navi" onClick="location.href='archive.html'">归档</div>
+<div class="navi" onClick="location.href='index.html'">首页</div>
+</div>
+<div id="main">
+<div id="content" class="content">
+<h2 class="bt">Redis笔记(四)</h2><br/>
+(这是一篇以前博客上的笔记，现在转发到这里)<br/>
+这次学学事务与过期时间。<br/>
+<br/>
+<h3 class="bt">事务</h3><br/>
+Redis的“事务”和其它数据库一样，可以一次执行多条语句。执行过程中不会被打断。但需要注意的一点是，Redis的事务不能回滚。要使用事务的时，只要把语句写在multi和exec之间就行了。<br/>
+<pre class="line-numbers"><code class="language-bash">127.0.0.1:1010> multi<br/>
+OK<br/>
+127.0.0.1:1010> lpush tran1 100<br/>
+QUEUED<br/>
+127.0.0.1:1010> lpush tran2 200<br/>
+QUEUED<br/>
+127.0.0.1:1010> exec<br/>
+1) (integer) 1<br/>
+2) (integer) 1<br/>
+</code></pre><br/>
+如果有错误，需要自己处理。语法错误的话，在敲完一条语句后就会有提示，整个事务都不会执行；若运行时出错，则出错的语句会有相应提示，其它正确的语句执行。<br/>
+<pre class="line-numbers"><code class="language-bash">127.0.0.1:1010> multi<br/>
+OK<br/>
+127.0.0.1:1010> lpush tran3 300<br/>
+QUEUED<br/>
+// 语法错误<br/>
+127.0.0.1:1010> lppush tran4 400<br/>
+(error) ERR unknown command ’lppush’<br/>
+127.0.0.1:1010> exec<br/>
+(error) EXECABORT Transaction discarded because of previous errors.<br/>
+// 运行时报错，只有一条被执行。<br/>
+127.0.0.1:1010> multi<br/>
+OK<br/>
+127.0.0.1:1010> sadd collA 1 2 3<br/>
+QUEUED<br/>
+127.0.0.1:1010> lpush collA 4 5 6<br/>
+QUEUED<br/>
+127.0.0.1:1010> exec<br/>
+1) (integer) 0<br/>
+2) (error) WRONGTYPE Operation against a key holding the wrong kind of valuez<br/>
+</code></pre><br/>
+<h3 class="bt">过期时间</h3><br/>
+Redis的key是可以有过期时间的。<br/>
+<pre class="line-numbers"><code class="language-bash">127.0.0.1:1010> set time_out out<br/>
+OK<br/>
+// 过期时间：20秒。单位是秒！秒！秒！！（重要的事说三遍）<br/>
+127.0.0.1:1010> expire time_out 20<br/>
+(integer) 1<br/>
+// ttl命令可以查看剩余的时间<br/>
+127.0.0.1:1010> ttl time_out<br/>
+(integer) 17<br/>
+127.0.0.1:1010> get time_out<br/>
+"out"<br/>
+127.0.0.1:1010> ttl time_out<br/>
+(integer) 12<br/>
+127.0.0.1:1010> ttl time_out<br/>
+(integer) 10<br/>
+127.0.0.1:1010> ttl time_out<br/>
+(integer) 8<br/>
+127.0.0.1:1010> ttl time_out<br/>
+(integer) 7<br/>
+127.0.0.1:1010> ttl time_out<br/>
+(integer) 6<br/>
+127.0.0.1:1010> ttl time_out<br/>
+(integer) 5<br/>
+127.0.0.1:1010> ttl time_out<br/>
+(integer) 3<br/>
+127.0.0.1:1010> ttl time_out<br/>
+(integer) 2<br/>
+127.0.0.1:1010> ttl time_out<br/>
+(integer) 1<br/>
+// 过期2秒<br/>
+127.0.0.1:1010> ttl time_out<br/>
+(integer) -2<br/>
+127.0.0.1:1010> get time_out<br/>
+(nil)<br/>
+</code></pre><br/>
+<br/>
+<br/>
+<br/>
+
+</div>
+</div>
+<div id="split-line"></div>
+<div class="onbottom">Copyright&nbsp;&copy;&nbsp;Faluo&nbsp;</div>
+</body>
