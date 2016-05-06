@@ -23,7 +23,7 @@
 </div>
 <div id="main">
 <div id="content" class="content">
-<h2 class="bt">简陋的.vimrc</h2><br/>
+<h2 class="bt">简陋的.vimrc</h2>
 <pre class="line-numbers"><code class="language-bash">set shiftwidth=4<br/>
 colors desert <br/>
 syntax on<br/>
@@ -41,20 +41,20 @@ set nowrap<br/>
 let mapleader="-"<br/>
 <br/>
 nnoremap <leader>d dd<br/>
-nnoremap <leader>ev :tab new $MYVIMRC<cr><br/>
-nnoremap <leader>sv :source $MYVIMRC<cr><br/>
+nnoremap <leader>ev :tab new $MYVIMRC<cr>
+nnoremap <leader>sv :source $MYVIMRC<cr>
 <br/>
 augroup ft_php<br/>
 	autocmd!<br/>
-	autocmd FileType php nnoremap <buffer> <leader>= I//<esc><br/>
-	autocmd FileType php :iabbrev <buffer> iff if(){<cr>}<left><esc><br/>
-	autocmd FileType php :iabbrev <buffer> forr for($i = 0 ; $i <  ; ++$i){<cr>}<left><esc><br/>
+	autocmd FileType php nnoremap <buffer> <leader>= I//<esc>
+	autocmd FileType php :iabbrev <buffer> iff if(){<cr>}<left><esc>
+	autocmd FileType php :iabbrev <buffer> forr for($i = 0 ; $i <  ; ++$i){<cr>}<left><esc>
 augroup end<br/>
 <br/>
 augroup ft_py<br/>
 	autocmd!<br/>
-	autocmd FileType python nnoremap <buffer> <leader>= I#<esc><br/>
- 	autocmd FileType python :iabbrev <buffer> pyhead #!/usr/bin/env python<cr># -*- coding: utf-8 -*-<cr><br/>
+	autocmd FileType python nnoremap <buffer> <leader>= I#<esc>
+ 	autocmd FileType python :iabbrev <buffer> pyhead #!/usr/bin/env python<cr># -*- coding: utf-8 -*-<cr>
 augroup end<br/>
 <br/>
 set statusline=%=%F\ \%l/%L\ \%P\ -\ <br/>

@@ -23,11 +23,11 @@
 </div>
 <div id="main">
 <div id="content" class="content">
-<h2 class="bt">Redis笔记(四)</h2><br/>
+<h2 class="bt">Redis笔记(四)</h2>
 (这是一篇以前博客上的笔记，现在转发到这里)<br/>
 这次学学事务与过期时间。<br/>
 <br/>
-<h3 class="bt">事务</h3><br/>
+<h3 class="bt">事务</h3>
 Redis的“事务”和其它数据库一样，可以一次执行多条语句。执行过程中不会被打断。但需要注意的一点是，Redis的事务不能回滚。要使用事务的时，只要把语句写在multi和exec之间就行了。<br/>
 <pre class="line-numbers"><code class="language-bash">127.0.0.1:1010> multi<br/>
 OK<br/>
@@ -38,7 +38,7 @@ QUEUED<br/>
 127.0.0.1:1010> exec<br/>
 1) (integer) 1<br/>
 2) (integer) 1<br/>
-</code></pre><br/>
+</code></pre>
 如果有错误，需要自己处理。语法错误的话，在敲完一条语句后就会有提示，整个事务都不会执行；若运行时出错，则出错的语句会有相应提示，其它正确的语句执行。<br/>
 <pre class="line-numbers"><code class="language-bash">127.0.0.1:1010> multi<br/>
 OK<br/>
@@ -59,8 +59,8 @@ QUEUED<br/>
 127.0.0.1:1010> exec<br/>
 1) (integer) 0<br/>
 2) (error) WRONGTYPE Operation against a key holding the wrong kind of valuez<br/>
-</code></pre><br/>
-<h3 class="bt">过期时间</h3><br/>
+</code></pre>
+<h3 class="bt">过期时间</h3>
 Redis的key是可以有过期时间的。<br/>
 <pre class="line-numbers"><code class="language-bash">127.0.0.1:1010> set time_out out<br/>
 OK<br/>
@@ -95,7 +95,7 @@ OK<br/>
 (integer) -2<br/>
 127.0.0.1:1010> get time_out<br/>
 (nil)<br/>
-</code></pre><br/>
+</code></pre>
 <br/>
 <br/>
 <br/>

@@ -26,7 +26,7 @@
 <div class="title"><a class="in-table" href="16050502.html">Redis笔记(四)</a></div>(这是一篇以前博客上的笔记，现在转发到这里)<br/>
 这次学学事务与过期时间。<br/>
 <br/>
-<h3 class="bt">事务</h3><br/>
+<h3 class="bt">事务</h3>
 Redis的“事务”和其它数据库一样，可以一次执行多条语句。执行过程中不会被打断。但需要注意的一点是，Redis的事务不能回滚。要使用事务的时，只要把语句写在multi和exec之间就行了。<br/>
 <pre class="line-numbers"><code class="language-bash">127.0.0.1:1010> multi<br/>
 OK<br/>
@@ -37,13 +37,13 @@ QUEUED<br/>
 127.0.0.1:1010> exec<br/>
 1) (integer) 1<br/>
 2) (integer) 1<br/>
-</code></pre><br/>
+</code></pre>
 <br/>
 <br/>
-<br/><div class="title_right"><a class="in-table" href="16050502.html">阅读全部</a></div><br/><div id="split-line"></div><div class="title"><a class="in-table" href="16050501.html">Redis笔记(三)</a></div>(这是一篇以前博客上的笔记，现在转发到这里)<br/>
+<div class="title_right"><a class="in-table" href="16050502.html">阅读全部</a></div><div id="split-line"></div><div class="title"><a class="in-table" href="16050501.html">Redis笔记(三)</a></div>(这是一篇以前博客上的笔记，现在转发到这里)<br/>
 简单玩一玩redis的排序。这一部分，才真让咱感觉到redis是一款“数据库”！<br/>
 <br/>
-<h3 class="bt">SORT与GET</h3><br/>
+<h3 class="bt">SORT与GET</h3>
 SORT排序：<br/>
 <pre class="line-numbers"><code class="language-bash">127.0.0.1:1010> lrange list 0 99<br/>
 1) "2"<br/>
@@ -68,19 +68,19 @@ SORT排序：<br/>
 127.0.0.1:1010> sort collA alpha limit 2 4 desc<br/>
 1) "b"<br/>
 2) "a"<br/>
-</code></pre><br/>
-下面，写一个稍微复杂点的例子(真的只是稍微)。平时我比较喜欢追几部新番动画看看。这一季，我打算追的有三部番，分别在周一、三、五收看。并且，自己给这三部新番打了分数。满分五分。于是，现在的情况是这样的：<table style="border:1px solid #000000;color:#000000;border-collapse:collapse;width:100%;"><br/>
-<tr><td style="border:1px solid #000000;color:#000000;padding:5px;">week</td><td style="border:1px solid #000000;color:#000000;padding:5px;">anime</td><td style="border:1px solid #000000;color:#000000;padding:5px;">favorite</td></tr><br/>
-<tr><td style="border:1px solid #000000;color:#000000;padding:5px;">1</td><td style="border:1px solid #000000;color:#000000;padding:5px;">终物语</td><td style="border:1px solid #000000;color:#000000;padding:5px;">5</td></tr><br/>
-<tr><td style="border:1px solid #000000;color:#000000;padding:5px;">3</td><td style="border:1px solid #000000;color:#000000;padding:5px;">绯弹的亚里亚AA</td><td style="border:1px solid #000000;color:#000000;padding:5px;">2</td></tr><br/>
-<tr><td style="border:1px solid #000000;color:#000000;padding:5px;">5</td><td style="border:1px solid #000000;color:#000000;padding:5px;">全部成为F</td><td style="border:1px solid #000000;color:#000000;padding:5px;">4</td></tr><br/>
-</table><br/>
+</code></pre>
+下面，写一个稍微复杂点的例子(真的只是稍微)。平时我比较喜欢追几部新番动画看看。这一季，我打算追的有三部番，分别在周一、三、五收看。并且，自己给这三部新番打了分数。满分五分。于是，现在的情况是这样的：<table style="border:1px solid #000000;color:#000000;border-collapse:collapse;width:100%;">
+<tr><td style="border:1px solid #000000;color:#000000;padding:5px;">week</td><td style="border:1px solid #000000;color:#000000;padding:5px;">anime</td><td style="border:1px solid #000000;color:#000000;padding:5px;">favorite</td></tr>
+<tr><td style="border:1px solid #000000;color:#000000;padding:5px;">1</td><td style="border:1px solid #000000;color:#000000;padding:5px;">终物语</td><td style="border:1px solid #000000;color:#000000;padding:5px;">5</td></tr>
+<tr><td style="border:1px solid #000000;color:#000000;padding:5px;">3</td><td style="border:1px solid #000000;color:#000000;padding:5px;">绯弹的亚里亚AA</td><td style="border:1px solid #000000;color:#000000;padding:5px;">2</td></tr>
+<tr><td style="border:1px solid #000000;color:#000000;padding:5px;">5</td><td style="border:1px solid #000000;color:#000000;padding:5px;">全部成为F</td><td style="border:1px solid #000000;color:#000000;padding:5px;">4</td></tr>
+</table>
 下面，把这张表放到redis中。<br/>
 <br/>
-<br/><div class="title_right"><a class="in-table" href="16050501.html">阅读全部</a></div><br/><div id="split-line"></div><div class="title"><a class="in-table" href="16050500.html">Redis笔记(二)</a></div>(这是一篇以前博客上的笔记，现在转发到这里)<br/>
+<div class="title_right"><a class="in-table" href="16050501.html">阅读全部</a></div><div id="split-line"></div><div class="title"><a class="in-table" href="16050500.html">Redis笔记(二)</a></div>(这是一篇以前博客上的笔记，现在转发到这里)<br/>
 这次补充一下上次列表中忘提的两个命令。再来简单玩一玩集合。<br/>
 <br/>
-<h3 class="bt">列表(三)</h3><br/>
+<h3 class="bt">列表(三)</h3>
 补充两个比较重要的命令：RPOPLPUSH和LLEN。<br/>
 <pre class="line-numbers"><code class="language-bash">127.0.0.1:1010> lrange list 0 999<br/>
 1) "2"<br/>
@@ -114,16 +114,16 @@ SORT排序：<br/>
 7) "100"<br/>
 127.0.0.1:1010> llen list2<br/>
 (integer) 7<br/>
-</code></pre><br/>
+</code></pre>
 <br/>
-<br/><div class="title_right"><a class="in-table" href="16050500.html">阅读全部</a></div><br/><div id="split-line"></div><div class="title"><a class="in-table" href="16050401.html">Redis笔记(一)</a></div>(这是一篇以前博客上的笔记，现在转发到这里)<br/>
+<div class="title_right"><a class="in-table" href="16050500.html">阅读全部</a></div><div id="split-line"></div><div class="title"><a class="in-table" href="16050401.html">Redis笔记(一)</a></div>(这是一篇以前博客上的笔记，现在转发到这里)<br/>
 Redis官网：<a href="http://redis.io/" target="_blank" class="on-search" rel="nofollow">http://redis.io/</a>；<br/>
 介绍：<a href="https://en.wikipedia.org/wiki/Redis" target="_blank" class="on-search" rel="nofollow">redis</a>(wiki)；<br/>
 参考文档：<a href="http://redisdoc.com/" target="_blank" class="on-search" rel="nofollow">http://redisdoc.com/</a>(中文。我随便找的。)<br/>
 安装：可以自己去官网下源码make。不多废话。下面是笔记的第一部分：<br/>
-<span style="padding:3px;border:0px;border-style:solid;border-color:#B1B3BB;background-color:#EEEEEE;color:#990033;width:auto;"">注：我改了端口的。</span><br/>
+<span style="padding:3px;border:0px;border-style:solid;border-color:#B1B3BB;background-color:#EEEEEE;color:#990033;width:auto;"">注：我改了端口的。</span>
 <br/>
-<h3 class="bt">值的一些加减操作</h3><br/>
+<h3 class="bt">值的一些加减操作</h3>
 <pre class="line-numbers"><code class="language-bash">127.0.0.1:1010> set faluo 1<br/>
 OK<br/>
 127.0.0.1:1010> incrby faluo 2<br/>
@@ -132,8 +132,8 @@ OK<br/>
 "3"<br/>
 127.0.0.1:1010> decrby faluo 2<br/>
 (integer) 1<br/>
-</code></pre><br/><div class="title_right"><a class="in-table" href="16050401.html">阅读全部</a></div><br/><div id="split-line"></div><div class="title"><a class="in-table" href="16050400.html">homebrew安装phpredis</a></div>(这是一篇以前博客上的笔记，现在转发到这里)<br/>
-昨天(15-10-26)在OSX下用homebrew安装phpredis，第一次接触这两个项目，边学边用。有个小地方卡了一下：我的系统是最新的10.11，PHP版本是5.5.30。在安装的最后，需要把redis.so拷到<span style="padding:3px;border:0px;border-style:solid;border-color:#B1B3BB;background-color:#EEEEEE;color:#990033;width:auto;"">/usr/lib/php/extensions/no-debug-non-zts-20121212</span>目录下（至少我机器上是这个目录）。可是我无论是用<span style="padding:3px;border:0px;border-style:solid;border-color:#B1B3BB;background-color:#EEEEEE;color:#990033;width:auto;"">cp</span>还是<span style="padding:3px;border:0px;border-style:solid;border-color:#B1B3BB;background-color:#EEEEEE;color:#990033;width:auto;"">sudo cp</span>，都会提示Operation not permitted。于是网上搜了一会，看到了这篇博客，才解决了问题：OSX常见问题列表(持续更新中...)。正如这篇博客上所说，需要<span style="padding:3px;border:0px;border-style:solid;border-color:#B1B3BB;background-color:#EEEEEE;color:#990033;width:auto;"">先关闭SIP</span>，之后再开启。操作的方法：<span style="padding:3px;border:0px;border-style:solid;border-color:#B1B3BB;background-color:#EEEEEE;color:#990033;width:auto;"">重启机器->按command+R->进入终端->输入csrutil disable就可以了(开启的命令是csrutil enable)</span>。所以在安装之前，先把SIP关闭吧。<br/><div class="title_right"><a class="in-table" href="16050400.html">阅读全部</a></div><br/><div id="split-line"></div><div class="title"><a class="in-table" href="16050300.html">简陋的.vimrc</a></div><pre class="line-numbers"><code class="language-bash">set shiftwidth=4<br/>
+</code></pre><div class="title_right"><a class="in-table" href="16050401.html">阅读全部</a></div><div id="split-line"></div><div class="title"><a class="in-table" href="16050400.html">homebrew安装phpredis</a></div>(这是一篇以前博客上的笔记，现在转发到这里)<br/>
+昨天(15-10-26)在OSX下用homebrew安装phpredis，第一次接触这两个项目，边学边用。有个小地方卡了一下：我的系统是最新的10.11，PHP版本是5.5.30。在安装的最后，需要把redis.so拷到<span style="padding:3px;border:0px;border-style:solid;border-color:#B1B3BB;background-color:#EEEEEE;color:#990033;width:auto;"">/usr/lib/php/extensions/no-debug-non-zts-20121212</span>目录下（至少我机器上是这个目录）。可是我无论是用<span style="padding:3px;border:0px;border-style:solid;border-color:#B1B3BB;background-color:#EEEEEE;color:#990033;width:auto;"">cp</span>还是<span style="padding:3px;border:0px;border-style:solid;border-color:#B1B3BB;background-color:#EEEEEE;color:#990033;width:auto;"">sudo cp</span>，都会提示Operation not permitted。于是网上搜了一会，看到了这篇博客，才解决了问题：OSX常见问题列表(持续更新中...)。正如这篇博客上所说，需要<span style="padding:3px;border:0px;border-style:solid;border-color:#B1B3BB;background-color:#EEEEEE;color:#990033;width:auto;"">先关闭SIP</span>，之后再开启。操作的方法：<span style="padding:3px;border:0px;border-style:solid;border-color:#B1B3BB;background-color:#EEEEEE;color:#990033;width:auto;"">重启机器->按command+R->进入终端->输入csrutil disable就可以了(开启的命令是csrutil enable)</span>。所以在安装之前，先把SIP关闭吧。<div class="title_right"><a class="in-table" href="16050400.html">阅读全部</a></div><div id="split-line"></div><div class="title"><a class="in-table" href="16050300.html">简陋的.vimrc</a></div><pre class="line-numbers"><code class="language-bash">set shiftwidth=4<br/>
 colors desert <br/>
 syntax on<br/>
 set tabstop=4<br/>
@@ -150,24 +150,24 @@ set nowrap<br/>
 let mapleader="-"<br/>
 <br/>
 nnoremap <leader>d dd<br/>
-nnoremap <leader>ev :tab new $MYVIMRC<cr><br/>
-nnoremap <leader>sv :source $MYVIMRC<cr><br/>
+nnoremap <leader>ev :tab new $MYVIMRC<cr>
+nnoremap <leader>sv :source $MYVIMRC<cr>
 <br/>
 augroup ft_php<br/>
 	autocmd!<br/>
-	autocmd FileType php nnoremap <buffer> <leader>= I//<esc><br/>
-	autocmd FileType php :iabbrev <buffer> iff if(){<cr>}<left><esc><br/>
-	autocmd FileType php :iabbrev <buffer> forr for($i = 0 ; $i <  ; ++$i){<cr>}<left><esc><br/>
+	autocmd FileType php nnoremap <buffer> <leader>= I//<esc>
+	autocmd FileType php :iabbrev <buffer> iff if(){<cr>}<left><esc>
+	autocmd FileType php :iabbrev <buffer> forr for($i = 0 ; $i <  ; ++$i){<cr>}<left><esc>
 augroup end<br/>
 <br/>
 augroup ft_py<br/>
 	autocmd!<br/>
-	autocmd FileType python nnoremap <buffer> <leader>= I#<esc><br/>
- 	autocmd FileType python :iabbrev <buffer> pyhead #!/usr/bin/env python<cr># -*- coding: utf-8 -*-<cr><br/>
+	autocmd FileType python nnoremap <buffer> <leader>= I#<esc>
+ 	autocmd FileType python :iabbrev <buffer> pyhead #!/usr/bin/env python<cr># -*- coding: utf-8 -*-<cr>
 augroup end<br/>
 <br/>
 set statusline=%=%F\ \%l/%L\ \%P\ -\ <br/>
-</code></pre><br/><div class="title_right"><a class="in-table" href="16050300.html">阅读全部</a></div><br/><div id="split-line"></div>
+</code></pre><div class="title_right"><a class="in-table" href="16050300.html">阅读全部</a></div><div id="split-line"></div>
 <div style="width:100%;text-align:center;"><span id="page" class="normal" onclick="location.href='2.html'">Older&nbsp;&gt;</span></div>
 </div>
 </div>

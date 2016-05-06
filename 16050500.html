@@ -23,11 +23,11 @@
 </div>
 <div id="main">
 <div id="content" class="content">
-<h2 class="bt">Redis笔记(二)</h2><br/>
+<h2 class="bt">Redis笔记(二)</h2>
 (这是一篇以前博客上的笔记，现在转发到这里)<br/>
 这次补充一下上次列表中忘提的两个命令。再来简单玩一玩集合。<br/>
 <br/>
-<h3 class="bt">列表(三)</h3><br/>
+<h3 class="bt">列表(三)</h3>
 补充两个比较重要的命令：RPOPLPUSH和LLEN。<br/>
 <pre class="line-numbers"><code class="language-bash">127.0.0.1:1010> lrange list 0 999<br/>
 1) "2"<br/>
@@ -61,8 +61,8 @@
 7) "100"<br/>
 127.0.0.1:1010> llen list2<br/>
 (integer) 7<br/>
-</code></pre><br/>
-<h3 class="bt">集合</h3><br/>
+</code></pre>
+<h3 class="bt">集合</h3>
 和列表相比，集合是<span style="color:#FF0000;font-weight:bold;"">无序，唯一</span>的(其实Redis有有序集合，不过我这里不提了。后面用sort排序好了)。它的基本添加与删除用法：<br/>
 <pre class="line-numbers"><code class="language-bash">127.0.0.1:1010> sadd coll 1 2 3 4 5 1 6<br/>
 (integer) 6<br/>
@@ -85,7 +85,7 @@
 (integer) 1<br/>
 127.0.0.1:1010> sismember coll 8<br/>
 (integer) 0<br/>
-</code></pre><br/>
+</code></pre>
 <h3 class="bt">集合</h3>运算<br/>
 <pre class="line-numbers"><code class="language-bash">127.0.0.1:1010> sadd collA a b c d<br/>
 (integer) 4<br/>
@@ -106,7 +106,7 @@
 127.0.0.1:1010> smembers collC<br/>
 1) "b"<br/>
 2) "a"<br/>
-</code></pre><br/>
+</code></pre>
 <pre class="line-numbers"><code class="language-bash">//和上面的sdiff类似。不过这次取交集。<br/>
 127.0.0.1:1010> sinter collA collB<br/>
 1) "d"<br/>
@@ -119,7 +119,7 @@
 127.0.0.1:1010> smembers collC<br/>
 1) "c"<br/>
 2) "d"<br/>
-</code></pre><br/>
+</code></pre>
 <pre class="line-numbers"><code class="language-bash">// 元素的移动与删除。很简单，懒得写注释了。<br/>
 127.0.0.1:1010> sadd collA e<br/>
 (integer) 1<br/>
@@ -144,7 +144,7 @@
 (integer) 1<br/>
 127.0.0.1:1010> smembers collE<br/>
 (empty list or set)<br/>
-</code></pre><br/>
+</code></pre>
 <pre class="line-numbers"><code class="language-bash">// 合并<br/>
 127.0.0.1:1010> smembers collA<br/>
 1) "b"<br/>
@@ -163,7 +163,7 @@
 4) "a"<br/>
 5) "c"<br/>
 6) "b"<br/>
-</code></pre><br/>
+</code></pre>
 <br/>
 <br/>
 

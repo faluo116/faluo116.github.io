@@ -23,15 +23,15 @@
 </div>
 <div id="main">
 <div id="content" class="content">
-<h2 class="bt">Redis笔记(一)</h2><br/>
+<h2 class="bt">Redis笔记(一)</h2>
 (这是一篇以前博客上的笔记，现在转发到这里)<br/>
 Redis官网：<a href="http://redis.io/" target="_blank" class="on-search" rel="nofollow">http://redis.io/</a>；<br/>
 介绍：<a href="https://en.wikipedia.org/wiki/Redis" target="_blank" class="on-search" rel="nofollow">redis</a>(wiki)；<br/>
 参考文档：<a href="http://redisdoc.com/" target="_blank" class="on-search" rel="nofollow">http://redisdoc.com/</a>(中文。我随便找的。)<br/>
 安装：可以自己去官网下源码make。不多废话。下面是笔记的第一部分：<br/>
-<span style="padding:3px;border:0px;border-style:solid;border-color:#B1B3BB;background-color:#EEEEEE;color:#990033;width:auto;"">注：我改了端口的。</span><br/>
+<span style="padding:3px;border:0px;border-style:solid;border-color:#B1B3BB;background-color:#EEEEEE;color:#990033;width:auto;"">注：我改了端口的。</span>
 <br/>
-<h3 class="bt">值的一些加减操作</h3><br/>
+<h3 class="bt">值的一些加减操作</h3>
 <pre class="line-numbers"><code class="language-bash">127.0.0.1:1010> set faluo 1<br/>
 OK<br/>
 127.0.0.1:1010> incrby faluo 2<br/>
@@ -40,9 +40,9 @@ OK<br/>
 "3"<br/>
 127.0.0.1:1010> decrby faluo 2<br/>
 (integer) 1<br/>
-</code></pre><br/>
+</code></pre>
 <br/>
-<h3 class="bt">字符串的添加与长度</h3><br/>
+<h3 class="bt">字符串的添加与长度</h3>
 <pre class="line-numbers"><code class="language-bash">127.0.0.1:1010> set key hello<br/>
 OK<br/>
 127.0.0.1:1010> append key " world"<br/>
@@ -51,16 +51,16 @@ OK<br/>
 "hello world"<br/>
 127.0.0.1:1010> strlen key<br/>
 (integer) 11<br/>
-</code></pre><br/>
+</code></pre>
 <br/>
-<h3 class="bt">散列</h3><br/>
+<h3 class="bt">散列</h3>
 <pre class="line-numbers"><code class="language-bash">127.0.0.1:1010> mset faluo1 100 faluo2 200 faluo3 300<br/>
 OK<br/>
 127.0.0.1:1010> mget faluo2 faluo1 faluo3<br/>
 1) "200"<br/>
 2) "100"<br/>
 3) "300"<br/>
-</code></pre><br/>
+</code></pre>
 <pre class="line-numbers"><code class="language-bash">127.0.0.1:1010> hmset new:faluo age 30 height 172 width 172 weight 172<br/>
 OK<br/>
 127.0.0.1:1010> hmget new:faluo age width<br/>
@@ -75,11 +75,11 @@ OK<br/>
 6) "172"<br/>
 7) "weight"<br/>
 8) "172"<br/>
-</code></pre><br/>
+</code></pre>
 <br/>
-<h3 class="bt">列表(一)</h3><br/>
+<h3 class="bt">列表(一)</h3>
 需要注意<span style="padding:3px;border:0px;border-style:solid;border-color:#B1B3BB;background-color:#EEEEEE;color:#990033;width:auto;"">lrem</span>命令。它的格式是：<br/>
-<span style="padding:3px;border:0px;border-style:solid;border-color:#B1B3BB;background-color:#EEEEEE;color:#990033;width:auto;"">lrem key count value</span><br/>
+<span style="padding:3px;border:0px;border-style:solid;border-color:#B1B3BB;background-color:#EEEEEE;color:#990033;width:auto;"">lrem key count value</span>
 当count=0时，删除所有元素；<br/>
 当count为负数时，从右面删除count个符合的元素；<br/>
 当count为正数时，从左面删除count个符合的元素。<br/>
@@ -107,9 +107,9 @@ OK<br/>
 1) "2"<br/>
 2) "1"<br/>
 3) "6"<br/>
-</code></pre><br/>
+</code></pre>
 <br/>
-<h3 class="bt">列表(二)</h3><br/>
+<h3 class="bt">列表(二)</h3>
 列表的各种插入。<br/>
 <pre class="line-numbers"><code class="language-bash">127.0.0.1:1010> lrange list 0 -1<br/>
 1) "2"<br/>
