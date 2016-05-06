@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="author" content="Faluo" />
+<meta name="subject" content="法珞的备忘录" />
+<meta name="keywords" content="个人笔记+碎言碎语" />
+<meta name="description" content="简单的生活记录" />
+<title>法珞的备忘录</title>
+<link rel="shortcut icon" href="s64.jpg" />
+<link rel="apple-touch-icon" href="b512.jpg" />
+<link type="text/css" href="css/mafuyu_wiki.css" rel="stylesheet" />
+<link type="text/css" href="css/page.css" rel="stylesheet" />
+<link type="text/css" href="css/prism.css" rel="stylesheet" />
+<script type='text/javascript' src='js/prism.js' ></script>
+</head>
+<body style="background-color:#FFFFFF;">
+<div class="ontop">
+<a href="index.html" class="top">法珞的备忘录</a>
+<div class="navi" onClick="location.href='about.html'">关于</div>
+<div class="navi" onClick="location.href='archive.html'">归档</div>
+<div class="navi" onClick="location.href='index.html'">首页</div>
+</div>
+<div id="main">
+<div id="content" class="content">
+<h2 class="bt">Sqlite的事务，Truncate和表信息</h2>
+(这是一篇以前博客上的笔记，现在转发到这里)<br/>
+<h3 class="bt">事务</h3>
+只要写在begin和commit中就行了。在PHP中我是这么写的：<br/>
+<pre class="line-numbers"><code class="language-php">$conn->query("BEGIN")；<br/>
+$conn->query($sql) //这里执行多条语句<br/>
+$conn->query("COMMIT");<br/>
+</code></pre>
+<h3 class="bt">Truncate</h3>
+以下三条语句能达到Truncate的效果：<br/>
+<pre class="line-numbers"><code class="language-sql">delete from tableName;<br/>
+delete from seq;<br/>
+update sqlite_sequence set seq=0;<br/>
+</code></pre>
+<h3 class="bt">取得表信息</h3>
+<pre class="line-numbers"><code class="language-sql">select * from sqlite_master;<br/>
+</code></pre>
+<h3 class="bt">取得字段信息</h3>
+<pre class="line-numbers"><code class="language-sql">PRAGMA table_info(表名);<br/>
+</code></pre>
+<br/>
+<br/>
+
+</div>
+</div>
+<div id="split-line"></div>
+<div class="onbottom">Copyright&nbsp;&copy;&nbsp;Faluo&nbsp;</div>
+</body>

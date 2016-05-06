@@ -462,8 +462,9 @@ div.content{
 	margin-top:58px;
 	background-color:#FFFFFF;
 	border:0px solid #6E737A;
-    line-height:30px;
+    line-height:36px;
 	width:900px;
+    font-size:18px;
 }
 
 div.onbottom{
@@ -551,6 +552,7 @@ p.bt{
 
 h2{
     text-align:center;
+    font-size:30px;
 }
 
 b.bh{
