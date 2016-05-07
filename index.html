@@ -32,7 +32,7 @@
 <h3 class="bt">事务</h3>
 只要写在begin和commit中就行了。在PHP中我是这么写的：<br/>
 <pre class="line-numbers"><code class="language-php">$conn->query("BEGIN")；<br/>
-$conn->query($sql) //这里执行多条语句<br/>
+$conn->query($sql); //这里执行多条语句<br/>
 $conn->query("COMMIT");<br/>
 </code></pre>
 <h3 class="bt">Truncate</h3>
