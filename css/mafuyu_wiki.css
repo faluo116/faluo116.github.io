@@ -158,12 +158,12 @@ a.in-table:hover {
 }
 
 a.on-bottom:link {
-    color: #000000;
+    color: #6E737A;
     text-decoration: none;
 }
 
 a.on-bottom:visited {
-    color: #000000;
+    color: #6E737A;
     text-decoration: none;
 }
 
@@ -473,10 +473,10 @@ div.onbottom{
 	height:30px;
     text-align:center;
 	margin:0px auto 0px auto;
-	padding:10px -10px;
 	left:-1px;
 	line-height:30px;
-	font-size:20px;
+	font-size:16px;
+    color:#6E737A;
 	font-family:PTZ55F,华文细黑,serif;
 	/*background-color:#F0F0F0;*/
 	background-color:#FFFFFF;
