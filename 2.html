@@ -23,7 +23,46 @@
 </div>
 <div id="main">
 <div id="content" class="content">
-<div class="title"><a class="in-table" href="16050401.html">Redis笔记(一)</a></div>(这是一篇以前博客上的笔记，现在转发到这里)<br/>
+<div class="title"><a class="in-table" href="16050500.html">Redis笔记(二)</a></div>(这是一篇以前博客上的笔记，现在转发到这里)<br/>
+这次补充一下上次列表中忘提的两个命令。再来简单玩一玩集合。<br/>
+<br/>
+<h3 class="bt">列表(三)</h3>
+补充两个比较重要的命令：RPOPLPUSH和LLEN。<br/>
+<pre class="line-numbers"><code class="language-bash">127.0.0.1:1010> lrange list 0 999<br/>
+1) "2"<br/>
+2) "9"<br/>
+3) "1"<br/>
+4) "6"<br/>
+5) "8"<br/>
+127.0.0.1:1010> lpush list2 100 101 102 103 104 105<br/>
+(integer) 6<br/>
+127.0.0.1:1010> lrange list2 0 999<br/>
+1) "105"<br/>
+2) "104"<br/>
+3) "103"<br/>
+4) "102"<br/>
+5) "101"<br/>
+6) "100"<br/>
+127.0.0.1:1010> rpoplpush list list2<br/>
+"8"<br/>
+127.0.0.1:1010> lrange list 0 999<br/>
+1) "2"<br/>
+2) "9"<br/>
+3) "1"<br/>
+4) "6"<br/>
+127.0.0.1:1010> lrange list2 0 999<br/>
+1) "8"<br/>
+2) "105"<br/>
+3) "104"<br/>
+4) "103"<br/>
+5) "102"<br/>
+6) "101"<br/>
+7) "100"<br/>
+127.0.0.1:1010> llen list2<br/>
+(integer) 7<br/>
+</code></pre>
+<br/>
+<div class="title_right"><a class="in-table" href="16050500.html">阅读全部</a></div><div id="split-line"></div><div class="title"><a class="in-table" href="16050401.html">Redis笔记(一)</a></div>(这是一篇以前博客上的笔记，现在转发到这里)<br/>
 Redis官网：<a href="http://redis.io/" target="_blank" class="on-search" rel="nofollow">http://redis.io/</a>；<br/>
 介绍：<a href="https://en.wikipedia.org/wiki/Redis" target="_blank" class="on-search" rel="nofollow">redis</a>(wiki)；<br/>
 参考文档：<a href="http://redisdoc.com/" target="_blank" class="on-search" rel="nofollow">http://redisdoc.com/</a>(中文。我随便找的。)<br/>

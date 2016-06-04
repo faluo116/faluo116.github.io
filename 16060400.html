@@ -4,8 +4,8 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="author" content="Faluo" />
 <meta name="subject" content="法珞的备忘录" />
-<meta name="keywords" content="个人笔记+碎言碎语" />
-<meta name="description" content="简单的生活记录" />
+<meta name="keywords" content="JS基础轮子" />
+<meta name="description" content="JS最基础的用法，拷走即用" />
 <title>法珞的备忘录</title>
 <link rel="shortcut icon" href="s64.jpg" />
 <link rel="apple-touch-icon" href="b512.jpg" />
@@ -19,11 +19,12 @@
 <a href="index.html" class="top">法珞的备忘录</a>
 <div class="navi" onClick="location.href='about.html'">关于</div>
 <div class="navi" onClick="location.href='archive.html'">归档</div>
-<div class="navi_now" onClick="location.href='index.html'">首页</div>
+<div class="navi" onClick="location.href='index.html'">首页</div>
 </div>
 <div id="main">
 <div id="content" class="content">
-<div class="title"><a class="in-table" href="16060400.html">JS基础轮子</a></div>对于后端开发来说，用JS主要做2件事，还都是很基础的事：<br/>
+<h2 class="bt">JS基础轮子</h2>
+对于后端开发来说，用JS主要做2件事，还都是很基础的事：<br/>
 1、获取并验证；<br/>
 2、提交到后台。<br/>
 “验证”就不说了，每个项目对获取的数据的验证要求都不一样，“获取”和“提交”可以稍微谈谈。一般也就是用JS获取文本框，或者DIV，SPAN里的内容，再用AJAX提交一下。这些写法比较固定，简单。把下面的代码拷过去改个名字就能用了。<br/>
@@ -166,93 +167,9 @@ $t2 = $_POST["t2"];<br/>
 echo $t1 . "  " . $t2;<br/>
 </code></pre>
 <br/>
-<div class="title_right"><a class="in-table" href="16060400.html">阅读全部</a></div><div id="split-line"></div><div class="title"><a class="in-table" href="16052200.html">新玩具</a></div>前两天入了个新玩具。本来对于音频设备不是太感冒，“音质”也属于比较主观的的概念，但在知道这部入门的国砖后，还是第一时间入了，没犹豫。能听一听无损我就很满足了。并不想太发烧。<br/>
-<img src="img/X1.jpg" alt="FIIOX1" class="thumb"/>
-然而，我并没有好的耳机。现在在用的只有一条AKG的K420，还有一条铁三角的ATH-C770。都是入门中的入门货色。所以下一步打算入个差不多的，入门的耳机吧。只要比我现在用的好些就行。还是那句话，我不想在这上面花太多的钱，差不多就成了。<br/>
 <br/>
-<br/>
-<div class="title_right"><a class="in-table" href="16052200.html">阅读全部</a></div><div id="split-line"></div><div class="title"><a class="in-table" href="16050601.html">新键盘</a></div>今天买了把新键盘。仍然是国产的87键，青轴。之所以买它是因为两点原因：1、样子还算很喜欢；2、蓝牙。机械键盘的选择有很多，但是加上“蓝牙”这个要求后，选择的余地就缩小了不少。今天到的这把还算满意吧，第一次连OSX系统时不知道为什么command键（也就是WIN键）失灵了，断开重连就好了。现在用了一晚上再也没出问题。附送的USB线是充电用的，听说充满后能使用600小时。也不知道得充多久能满。<br/>
-<img src="img/new_kb.jpg" alt="new_kb" class="thumb"/>
-<br/>
-<br/>
-<br/>
-<div class="title_right"><a class="in-table" href="16050601.html">阅读全部</a></div><div id="split-line"></div><div class="title"><a class="in-table" href="16050600.html">Sqlite的事务，Truncate和表信息</a></div>(这是一篇以前博客上的笔记，现在转发到这里)<br/>
-<h3 class="bt">事务</h3>
-只要写在begin和commit中就行了。在PHP中我是这么写的：<br/>
-<pre class="line-numbers"><code class="language-php">$conn->query("BEGIN")；<br/>
-$conn->query($sql); //这里执行多条语句<br/>
-$conn->query("COMMIT");<br/>
-</code></pre>
-<h3 class="bt">Truncate</h3>
-以下三条语句能达到Truncate的效果：<br/>
-<pre class="line-numbers"><code class="language-sql">delete from tableName;<br/>
-delete from seq;<br/>
-update sqlite_sequence set seq=0;<br/>
-</code></pre>
-<h3 class="bt">取得表信息</h3>
-<pre class="line-numbers"><code class="language-sql">select * from sqlite_master;<br/>
-</code></pre>
-<h3 class="bt">取得字段信息</h3>
-<pre class="line-numbers"><code class="language-sql">PRAGMA table_info(表名);<br/>
-</code></pre>
-<br/>
-<br/>
-<div class="title_right"><a class="in-table" href="16050600.html">阅读全部</a></div><div id="split-line"></div><div class="title"><a class="in-table" href="16050502.html">Redis笔记(四)</a></div>(这是一篇以前博客上的笔记，现在转发到这里)<br/>
-这次学学事务与过期时间。<br/>
-<br/>
-<h3 class="bt">事务</h3>
-Redis的“事务”和其它数据库一样，可以一次执行多条语句。执行过程中不会被打断。但需要注意的一点是，Redis的事务不能回滚。要使用事务的时，只要把语句写在multi和exec之间就行了。<br/>
-<pre class="line-numbers"><code class="language-bash">127.0.0.1:1010> multi<br/>
-OK<br/>
-127.0.0.1:1010> lpush tran1 100<br/>
-QUEUED<br/>
-127.0.0.1:1010> lpush tran2 200<br/>
-QUEUED<br/>
-127.0.0.1:1010> exec<br/>
-1) (integer) 1<br/>
-2) (integer) 1<br/>
-</code></pre>
-<br/>
-<br/>
-<div class="title_right"><a class="in-table" href="16050502.html">阅读全部</a></div><div id="split-line"></div><div class="title"><a class="in-table" href="16050501.html">Redis笔记(三)</a></div>(这是一篇以前博客上的笔记，现在转发到这里)<br/>
-简单玩一玩redis的排序。这一部分，才真让咱感觉到redis是一款“数据库”！<br/>
-<br/>
-<h3 class="bt">SORT与GET</h3>
-SORT排序：<br/>
-<pre class="line-numbers"><code class="language-bash">127.0.0.1:1010> lrange list 0 99<br/>
-1) "2"<br/>
-2) "9"<br/>
-3) "1"<br/>
-4) "6"<br/>
-127.0.0.1:1010> smembers collA<br/>
-1) "b"<br/>
-2) "a"<br/>
-3) "d"<br/>
-4) "c"<br/>
-127.0.0.1:1010> sort list desc<br/>
-1) "9"<br/>
-2) "6"<br/>
-3) "2"<br/>
-4) "1"<br/>
-127.0.0.1:1010> sort collA alpha<br/>
-1) "a"<br/>
-2) "b"<br/>
-3) "c"<br/>
-4) "d"<br/>
-127.0.0.1:1010> sort collA alpha limit 2 4 desc<br/>
-1) "b"<br/>
-2) "a"<br/>
-</code></pre>
-下面，写一个稍微复杂点的例子(真的只是稍微)。平时我比较喜欢追几部新番动画看看。这一季，我打算追的有三部番，分别在周一、三、五收看。并且，自己给这三部新番打了分数。满分五分。于是，现在的情况是这样的：<table style="border:1px solid #000000;color:#000000;border-collapse:collapse;width:100%;">
-<tr><td style="border:1px solid #000000;color:#000000;padding:5px;">week</td><td style="border:1px solid #000000;color:#000000;padding:5px;">anime</td><td style="border:1px solid #000000;color:#000000;padding:5px;">favorite</td></tr>
-<tr><td style="border:1px solid #000000;color:#000000;padding:5px;">1</td><td style="border:1px solid #000000;color:#000000;padding:5px;">终物语</td><td style="border:1px solid #000000;color:#000000;padding:5px;">5</td></tr>
-<tr><td style="border:1px solid #000000;color:#000000;padding:5px;">3</td><td style="border:1px solid #000000;color:#000000;padding:5px;">绯弹的亚里亚AA</td><td style="border:1px solid #000000;color:#000000;padding:5px;">2</td></tr>
-<tr><td style="border:1px solid #000000;color:#000000;padding:5px;">5</td><td style="border:1px solid #000000;color:#000000;padding:5px;">全部成为F</td><td style="border:1px solid #000000;color:#000000;padding:5px;">4</td></tr>
-</table>
-下面，把这张表放到redis中。<br/>
-<br/>
-<div class="title_right"><a class="in-table" href="16050501.html">阅读全部</a></div><div id="split-line"></div>
-<div style="width:100%;text-align:center;"><span id="page" class="normal" onclick="location.href='2.html'">Older&nbsp;&gt;</span></div>
+
+(Fin.)
 </div>
 </div>
 <div id="split-line"></div>
