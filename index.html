@@ -102,24 +102,24 @@ HTML:<br/>
 </code></pre>
 JS:<br/>
 <pre class="line-numbers"><code class="language-javascript">$(function(){<br/>
-    $("#form_click").click(function(){<br/>
-        var form = document.createElement("form");<br/>
-	    	document.body.appendChild(form);<br/>
-        var text = document.createElement("input");<br/>
-	    	text.type = "text";<br/>
-	    	text.name = "new_text";<br/>
-        text.value = "动态生成的。一般都生成hidden。";<br/>
-        form.appendChild(text);<br/>
-        var b_submit = document.createElement("input");<br/>
-	    	b_submit.type = "submit";<br/>
-	    	b_submit.name = "b_submit";<br/>
-        b_submit.value = "点我提交";<br/>
-        form.appendChild(b_submit);<br/>
-	    	form.name="new_form";<br/>
-	    	form.method="post";<br/>
-	    	form.action="#"<br/>
-        // form.submit();<br/>
-    });<br/>
+	$("#form_click").click(function(){<br/>
+		var form = document.createElement("form");<br/>
+		document.body.appendChild(form);<br/>
+		var text = document.createElement("input");<br/>
+		text.type = "text";<br/>
+		text.name = "new_text";<br/>
+		text.value = "动态生成的。一般都生成hidden。";<br/>
+		form.appendChild(text);<br/>
+		var b_submit = document.createElement("input");<br/>
+		b_submit.type = "submit";<br/>
+		b_submit.name = "b_submit";<br/>
+		b_submit.value = "点我提交";<br/>
+		form.appendChild(b_submit);<br/>
+		form.name="new_form";<br/>
+		form.method="post";<br/>
+		form.action="#"<br/>
+		// form.submit();<br/>
+	});<br/>
 })<br/>
 </code></pre>
 如果把form.submit()的注释取消，会直接提交。HTML端看不到生成好的表单。<br/>
