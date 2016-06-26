@@ -23,7 +23,44 @@
 </div>
 <div id="main">
 <div id="content" class="content">
-<div class="title"><a class="in-table" href="16050500.html">Redis笔记(二)</a></div>(这是一篇以前博客上的笔记，现在转发到这里)<br/>
+<div class="title"><a class="in-table" href="16050501.html">Redis笔记(三)</a></div>(这是一篇以前博客上的笔记，现在转发到这里)<br/>
+简单玩一玩redis的排序。这一部分，才真让咱感觉到redis是一款“数据库”！<br/>
+<br/>
+<h3 class="bt">SORT与GET</h3>
+SORT排序：<br/>
+<pre class="line-numbers"><code class="language-bash">127.0.0.1:1010> lrange list 0 99<br/>
+1) "2"<br/>
+2) "9"<br/>
+3) "1"<br/>
+4) "6"<br/>
+127.0.0.1:1010> smembers collA<br/>
+1) "b"<br/>
+2) "a"<br/>
+3) "d"<br/>
+4) "c"<br/>
+127.0.0.1:1010> sort list desc<br/>
+1) "9"<br/>
+2) "6"<br/>
+3) "2"<br/>
+4) "1"<br/>
+127.0.0.1:1010> sort collA alpha<br/>
+1) "a"<br/>
+2) "b"<br/>
+3) "c"<br/>
+4) "d"<br/>
+127.0.0.1:1010> sort collA alpha limit 2 4 desc<br/>
+1) "b"<br/>
+2) "a"<br/>
+</code></pre>
+下面，写一个稍微复杂点的例子(真的只是稍微)。平时我比较喜欢追几部新番动画看看。这一季，我打算追的有三部番，分别在周一、三、五收看。并且，自己给这三部新番打了分数。满分五分。于是，现在的情况是这样的：<table style="border:1px solid #000000;color:#000000;border-collapse:collapse;width:100%;">
+<tr><td style="border:1px solid #000000;color:#000000;padding:5px;">week</td><td style="border:1px solid #000000;color:#000000;padding:5px;">anime</td><td style="border:1px solid #000000;color:#000000;padding:5px;">favorite</td></tr>
+<tr><td style="border:1px solid #000000;color:#000000;padding:5px;">1</td><td style="border:1px solid #000000;color:#000000;padding:5px;">终物语</td><td style="border:1px solid #000000;color:#000000;padding:5px;">5</td></tr>
+<tr><td style="border:1px solid #000000;color:#000000;padding:5px;">3</td><td style="border:1px solid #000000;color:#000000;padding:5px;">绯弹的亚里亚AA</td><td style="border:1px solid #000000;color:#000000;padding:5px;">2</td></tr>
+<tr><td style="border:1px solid #000000;color:#000000;padding:5px;">5</td><td style="border:1px solid #000000;color:#000000;padding:5px;">全部成为F</td><td style="border:1px solid #000000;color:#000000;padding:5px;">4</td></tr>
+</table>
+下面，把这张表放到redis中。<br/>
+<br/>
+<div class="title_right"><a class="in-table" href="16050501.html">阅读全部</a></div><div id="split-line"></div><div class="title"><a class="in-table" href="16050500.html">Redis笔记(二)</a></div>(这是一篇以前博客上的笔记，现在转发到这里)<br/>
 这次补充一下上次列表中忘提的两个命令。再来简单玩一玩集合。<br/>
 <br/>
 <h3 class="bt">列表(三)</h3>
