@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="author" content="Faluo" />
+<meta name="subject" content="法珞的备忘录" />
+<meta name="keywords" content="TLP,指纹识别与其它" />
+<meta name="description" content="Ubuntu,TLP,fingerpoint,psensor,reText" />
+<title>法珞的备忘录</title>
+<link rel="shortcut icon" href="s64.jpg" />
+<link rel="apple-touch-icon" href="b512.jpg" />
+<link type="text/css" href="css/mafuyu_wiki.css" rel="stylesheet" />
+<link type="text/css" href="css/page.css" rel="stylesheet" />
+<link type="text/css" href="css/prism.css" rel="stylesheet" />
+<script type='text/javascript' src='js/prism.js' ></script>
+</head>
+<body style="background-color:#FFFFFF;">
+<div class="ontop">
+<a href="index.html" class="top">法珞的备忘录</a>
+<div class="navi" onClick="location.href='about.html'">关于</div>
+<div class="navi" onClick="location.href='archive.html'">归档</div>
+<div class="navi" onClick="location.href='index.html'">首页</div>
+</div>
+<div id="main">
+<div id="content" class="content">
+<h2 class="bt">TLP,指纹识别与其它</h2>
+<br/>
+前两天我在《<a href="http://faluo116.github.io/16062600.html" target="_blank" class="on-search" rel="nofollow">“开箱即用”的Ubuntu</a>》中记录了简单安装配置Ubuntu的过程。这两天发现有另外几个软件不得不装，于是再记录一下。<br/>
+<br/>
+<h3 class="bt">TLP</h3>
+<br/>
+Linux的电源管理，我只能表示呵呵呵了。如果不装<a href="http://linrunner.de/en/tlp/tlp.html" target="_blank" class="on-search" rel="nofollow">TLP</a>，本子（只使用电池时）的使用时间会大打折扣。<br/>
+<br/>
+TLP的安装+启动：<br/>
+<pre class="line-numbers"><code class="language-bash">  sudo add-apt-repository ppa:linrunner/tlp<br/>
+  sudo apt-get update<br/>
+  sudo apt-get install tlp tlp-rdw<br/>
+  sudo tlp start<br/>
+</code></pre>
+如果想要开机就启动它的话，就把tlp start写到/etc/rc.local里。<br/>
+<br/>
+<h3 class="bt">指纹识别</h3>
+<br/>
+我的X250是有指纹识别的，但是在Ubuntu下却无法使用。于是再次通过百度解决：<br/>
+<pre class="line-numbers"><code class="language-bash">sudo add-apt-repository ppa:fingerprint/fprint<br/>
+sudo add-apt-repository ppa:fingerprint/fingerprint-gui<br/>
+sudo apt-get install fingerprint-gui policykit-1-fingerprint-gui libbsapi<br/>
+</code></pre>
+于是指纹也可以用了。无论在开机的时候，还是在终端里输入sudo的时候，都可以用指纹。<br/>
+<br/>
+<h3 class="bt">温度检测</h3>
+<br/>
+可能是在用OSX时养成的习惯吧，总是想随时查看机器的温度。在Ubuntu下可以用Psensor。安这个软件比较方便，在软件中心中能搜到，直接安装就好了。<br/>
+<img src="img/16062900_psensor.png" alt="Psensor" class="thumb"/>
+<br/>
+<h3 class="bt">Markdown编辑器</h3>
+<br/>
+目前我找到的Linux下最好用的markdown编辑器是ReText，实时预览窗口可以关掉（虽然我平时都开着），功能简单够用。同样在软件中心搜下就能找到了。<br/>
+<img src="img/16062900_markdown.png" alt="markdown" class="thumb"/>
+
+(Fin.)
+</div>
+</div>
+<div id="split-line"></div>
+<div class="onbottom">Friends:<a class="on-bottom" href="http://qiuranke.info" target="_blank">虬髯客</a>&nbsp;<a class="on-bottom" href="http://ccfans.coding.me" target="_blank">C君</a><br/>Copyright&nbsp;&copy;&nbsp;2016&nbsp;Faluo&nbsp;</div>
+<script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1255299937'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s95.cnzz.com/z_stat.php%3Fid%3D1255299937%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));</script>
+</body>
