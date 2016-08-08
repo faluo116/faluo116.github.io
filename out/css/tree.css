@@ -1,6 +1,6 @@
 div.bk{
-	font-family: 'Consolas', 'Panic Sans', 'DejaVu Sans Mono',
-				'Bitstream Vera Sans Mono', 'Menlo', 'Microsoft Yahei', monospace;
+	font-family:'Consolas', 'Panic Sans', 'DejaVu Sans Mono',
+                'Bitstream Vera Sans Mono', 'Menlo', 'Microsoft Yahei';
 	border-right: 1px solid #007BBE;
 	float:left;
 	margin-top:38px;

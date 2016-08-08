@@ -1,13 +1,3 @@
-input.title{
-	font-size:26px;
-	border:1px solid #006633;
-	width:798px;
-}
-input.search{
-	font-size:16px;
-	border:1px solid #006633;
-	width:260px;
-}
 .mfu_button{
 	cursor:pointer;
 	font-size:18px;
@@ -32,8 +22,8 @@ div.content{
 	line-height:43px;
 }
 div.ontop{
-	font-family: 'Consolas', 'Panic Sans', 'DejaVu Sans Mono',
-				'Bitstream Vera Sans Mono', 'Menlo', 'Microsoft Yahei', monospace;
+	font-family:'Consolas', 'Panic Sans', 'DejaVu Sans Mono',
+                'Bitstream Vera Sans Mono', 'Menlo', 'Microsoft Yahei';
 	position:fixed;
 	z-index:9999;
 	top:0px;
@@ -78,49 +68,11 @@ a.logo:hover{
 	color:#FFFFFF;
 	text-decoration:none;
 }
-a.admin:link{
-	color:#006633;
-	text-decoration:none;
-}
-a.admin:visited{
-	color:#006633;
-	text-decoration:none;
-}
-a.admin:hover{
-	color:#006633;
-	text-decoration:underline;
-}
 div.code{
 	background-color:#F1F1F1;
 	font-size:18px;
 	line-height:30px;
 	padding:6px;
-}
-table#order{
-	border:1px;
-	border-style:solid;
-	border-color:#006633;
-	border-collapse:collapse;
-	color:#000000;
-}
-td#otd{
-	border:1px;
-	border-style:solid;
-	border-color:#006633;
-	letter-spacing:1px;
-	padding:6px;
-}
-tr.hline:hover{
-	background-color:#D7DEC7;
-}
-th#otd{
-	border:1px;
-	border-style:solid;
-	border-color:#006633;
-	letter-spacing:1px;
-	padding:6px;
-	text-align:center;
-	background-color:#D7DEC7;
 }
 p.quote{
 	border-left: 6px solid #006633;
@@ -144,9 +96,10 @@ p.bt{
 	font-weight:bold;
 }
 .help{
-	font-family: 'Consolas', 'Panic Sans', 'DejaVu Sans Mono',
-                 'Bitstream Vera Sans Mono', 'Menlo', 'Microsoft Yahei', monospace;
+	font-family:'Consolas', 'Panic Sans', 'DejaVu Sans Mono',
+                'Bitstream Vera Sans Mono', 'Menlo', 'Microsoft Yahei';
 	float:left;
 	padding:16px;
 	margin-top:30px;
+	line-height:30px;
 }
