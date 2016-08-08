@@ -1,0 +1,23 @@
+<h1 > 添加用户(组)</h1>
+<br/>
+用以下命令来添加新用户组:<br/>
+<br/>
+<span style="padding:3px;border:0px;border-style:solid;border-color:#B1B3BB;background-color:#EEEEEE;color:#990033;width:auto;">groupadd newGroup</span>
+<br/>
+之后来添加用户,带home有bash,并且指定用户组: <br/>
+<br/>
+<span style="padding:3px;border:0px;border-style:solid;border-color:#B1B3BB;background-color:#EEEEEE;color:#990033;width:auto;">useradd -m -s /bin/bash -g newGroup newUser</span>
+<br/>
+这样,用户和用户组都建好了。并且新用户的home目录为“/home/newUser/”(root的 为/root/)。<br/>
+接下来,为其指定密码:<br/>
+<br/>
+<span style="padding:3px;border:0px;border-style:solid;border-color:#B1B3BB;background-color:#EEEEEE;color:#990033;width:auto;">passwd newUser</span>
+<br/>
+按提示输入两遍新密码。<br/>
+可以使用新用户登陆了。<br/>
+删除用户:<br/>
+<br/>
+<span style="padding:3px;border:0px;border-style:solid;border-color:#B1B3BB;background-color:#EEEEEE;color:#990033;width:auto;">userdel -r newUser</span>
+<br/>
+这样会连用户带其主目录一起删除。如果有同名用户组,也会一起被删除。<br/>
+<br/>
