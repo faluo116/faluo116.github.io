@@ -98,6 +98,8 @@ p.bt{
 .help{
 	font-family:'Consolas', 'Panic Sans', 'DejaVu Sans Mono',
                 'Bitstream Vera Sans Mono', 'Menlo', 'Microsoft Yahei';
+	position:absolute;			
+	left:320px;
 	float:left;
 	padding:16px;
 	margin-top:30px;

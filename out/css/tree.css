@@ -1,11 +1,19 @@
+div.cover{
+	position:fixed;
+	z-index:9999;
+	height:100%;
+}
 div.bk{
 	font-family:'Consolas', 'Panic Sans', 'DejaVu Sans Mono',
                 'Bitstream Vera Sans Mono', 'Menlo', 'Microsoft Yahei';
-	border-right: 1px solid #007BBE;
+	position:absolute;
+	overflow-y:auto;
+	border-right: 1px solid #007BBB;
 	float:left;
 	margin-top:38px;
 	line-height:36px;
 	width:300px;
+	height:100%;
 	background-color:#FFFFFF;
 }
 div.root{
