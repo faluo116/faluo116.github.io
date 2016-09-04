@@ -1,16 +1,15 @@
-div.cover{
+div.tree{
 	position:fixed;
 	z-index:9999;
-	height:100%;
 }
-div.bk{
+div.tree_item{
 	font-family:'Consolas', 'Panic Sans', 'DejaVu Sans Mono',
                 'Bitstream Vera Sans Mono', 'Menlo', 'Microsoft Yahei';
 	position:absolute;
 	overflow-y:auto;
-	border-right: 1px solid #007BBB;
+	border-right: 1px solid #CCCCCC;
 	float:left;
-	margin-top:38px;
+	margin-top:50px;
 	line-height:36px;
 	width:300px;
 	height:100%;
@@ -21,12 +20,13 @@ div.root{
 	padding-left:10px;
 	font-size:16px;
 	font-weight:bold;
+	color:#D25855;
 }
 div.root:hover{
 	cursor:pointer;
-	color:#000000;
+	color:#D25855;
 	/** background-color:#D7DEC7; **/
-	background-color:#BBE2F1;
+	background-color:#D1CACA;
 	font-weight:bold;
 }
 div.sub{
@@ -41,5 +41,5 @@ div.menu:hover{
 	cursor:pointer;
 	color:#000000;
 	/** background-color:#D7DEC7; **/
-	background-color:#BBE2F1;
+	background-color:#D1CACA;
 }

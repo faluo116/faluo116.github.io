@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>装订薄</title>
+		<script src="js/jquery.js" type="text/javascript"></script>
+        <link href="css/doc_creator.css" rel="stylesheet" type="text/css"/>
+        <link href="css/tree.css" rel="stylesheet" type="text/css"/>
+    </head>
+    <body bgcolor="#FFFFFF" style="overflow:hidden;">
+        <div class="header"><div><a href="" class="logo">装订薄</a></div></div>
+        <div class="tree" id="tree">
+            <div class="tree_item" id="tree_item">
+                <div class="root" onClick="hid('id1')">关于你的“装订薄”</div>
+<div id="id1" class="sub"><div class="menu" onClick="show('html/关于你的“装订薄”/10.html')">介绍&如何使用</div><div class="menu" onClick="show('html/关于你的“装订薄”/11.html')">更改样式</div><div class="menu" onClick="show('html/关于你的“装订薄”/12.html')">FAQ</div></div>
+            </div>
+        </div>
+        <div id="doc" class="doc">
+            <div style="font-size:20px;color:#006633;">Faluo静态文档生成器制作</div>
+            <br/>
+			<div style="font-size:16px;line-height:38px;">
+帕露菲咖啡
+			</div>
+			<br/>
+			<br/>
+            <div style="font-size:16px;color:#000000;">copyright[2016] by faluo</div>
+        </div>
+    </body>
+    <script type="text/javascript">
+        function hid($d){
+            var div = $('#' + $d);
+            if (div.css("display")=="" || div.css("display")=="none"){
+                div.css("display","block");
+            } else {
+                div.css("display","none");
+            }
+            cw();
+        }
+        function show($id){
+            $.get($id).success(function(data){
+                    var doc = $("#doc");
+                    doc.html(data);
+                    cw();
+                }
+            )
+        }
+        function cw(){
+            var doc = $("#doc");
+            var tree = $("#tree");
+            var tree_item = $("#tree_item");
+            var w = $(document).width() - 360;
+            var h = $(document).height() - 80;
+            doc.css("width",w + "px");
+            doc.css("height",h + "px");
+            tree.css("height",h + "px");
+            tree_item.css("height",h + "px");
+        }
+        $(window).resize(function(){
+            cw();
+        });
+        cw();
+    </script>
+</html>
