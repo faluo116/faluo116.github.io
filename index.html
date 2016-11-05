@@ -23,7 +23,38 @@
 </div>
 <div id="main">
 <div id="content" class="content">
-<div class="title"><a class="in-table" href="16062900.html">TLP,指纹识别与其它</a></div>前两天我在《<a href="http://faluo116.github.io/16062600.html" target="_blank" class="on-search" rel="nofollow">“开箱即用”的Ubuntu</a>》中记录了简单安装配置Ubuntu的过程。这两天发现有另外几个软件不得不装，于是再记录一下。<br/>
+<div class="title"><a class="in-table" href="16110500.html">vsCode+PHPDebug插件+XDebug</a></div>和vsCode比起来，Eclipse还是显得有些臃肿，所以平时用vsCode的时间比较多。虽然不奢望它的功能和IDE一样强大，但是希望至少要有debug功能才够方便。vsCode中正好有这样的插件，就<span style="padding:3px;border:0px;border-style:solid;border-color:#B1B3BB;background-color:#EEEEEE;color:#990033;width:auto;">PHP Debug</span>。在插件中心就可以搜到它了。<br/>
+<img src="img/16110500_Adapter.png" alt="Adapter" class="thumb"/>
+但是要注意图中的<span style="font-style:italic;">Adapter</span>这个词。这个插件只是个适配器，光装插件是无法debug的，还需要安装xdebug。如果你是PHP程序员，对它肯定十分熟悉。在Windows下安装它十分简单，到<a href="https://xdebug.org/" target="_blank" class="on-search" rel="nofollow">xdebug.org</a>按你PHP的版本下个DLL就可以了。但在OSX上稍微麻烦一点点，我曾经尝试过用homebrew来安装，但是失败了，于是找源码来编译。过程还是比较简单的，在它的github上写了详细的步骤，地址是：<a href="https://github.com/xdebug/xdebug" target="_blank" class="on-search" rel="nofollow">https://github.com/xdebug/xdebug</a>。<br/>
+首先，你需要有phpize，接下来下好源码，cd到源码目录，执行<span style="padding:3px;border:0px;border-style:solid;border-color:#B1B3BB;background-color:#EEEEEE;color:#990033;width:auto;">./configure --enable-xdebug</span>和<span style="padding:3px;border:0px;border-style:solid;border-color:#B1B3BB;background-color:#EEEEEE;color:#990033;width:auto;">make</span>命令来编译，之后就可以在<span style="padding:3px;border:0px;border-style:solid;border-color:#B1B3BB;background-color:#EEEEEE;color:#990033;width:auto;">modules</span>目录下得到<span style="font-style:italic;">xdebug.so</span>文件了，将它拷贝到<span style="padding:3px;border:0px;border-style:solid;border-color:#B1B3BB;background-color:#EEEEEE;color:#990033;width:auto;">/usr/lib/php/extensions/no-debug-non-zts-20121212</span>目录下即可。接下来，编辑<span style="font-style:italic;">php.ini</span>文件，在其下加上如下几行：<br/>
+<pre class="line-numbers"><code class="language-bash">;xdebug配置<br/>
+[Xdebug]<br/>
+;载入Xdebug<br/>
+zend_extension=xdebug.so<br/>
+;开启自动跟踪<br/>
+xdebug.auto_trace = On<br/>
+;开启异常跟踪<br/>
+xdebug.show_exception_trace = On<br/>
+;开启远程调试自动启动<br/>
+xdebug.remote_autostart = On<br/>
+;开启远程调试<br/>
+xdebug.remote_enable = On<br/>
+;收集变量<br/>
+xdebug.collect_vars = On<br/>
+;收集返回值<br/>
+xdebug.collect_return = On<br/>
+;收集参数<br/>
+xdebug.collect_params = On<br/>
+;端口<br/>
+xdebug.remote_port = 9001<br/>
+</code></pre>
+这几行是我在网上找的，随便一搜就能搜到不少。只是需要注意，那个端口是我自己改的，默认的应该是9000。<br/>
+<br/>
+至此，这个插件就算安好了。可以像在IDE中一样，用vsCode来调试PHP代码了。<br/>
+<br/>
+<br/>
+<br/>
+<div class="title_right"><a class="in-table" href="16110500.html">阅读全部</a></div><div id="split-line"></div><div class="title"><a class="in-table" href="16062900.html">TLP,指纹识别与其它</a></div>前两天我在《<a href="http://faluo116.github.io/16062600.html" target="_blank" class="on-search" rel="nofollow">“开箱即用”的Ubuntu</a>》中记录了简单安装配置Ubuntu的过程。这两天发现有另外几个软件不得不装，于是再记录一下。<br/>
 <br/>
 <h3 class="bt">TLP</h3>
 <br/>
@@ -263,28 +294,7 @@ echo $t1 . "  " . $t2;<br/>
 <br/>
 <br/>
 <br/>
-<div class="title_right"><a class="in-table" href="16050601.html">阅读全部</a></div><div id="split-line"></div><div class="title"><a class="in-table" href="16050600.html">Sqlite的事务，Truncate和表信息</a></div>(这是一篇以前博客上的笔记，现在转发到这里)<br/>
-<h3 class="bt">事务</h3>
-只要写在begin和commit中就行了。在PHP中我是这么写的：<br/>
-<pre class="line-numbers"><code class="language-php">$conn->query("BEGIN")；<br/>
-$conn->query($sql); //这里执行多条语句<br/>
-$conn->query("COMMIT");<br/>
-</code></pre>
-<h3 class="bt">Truncate</h3>
-以下三条语句能达到Truncate的效果：<br/>
-<pre class="line-numbers"><code class="language-sql">delete from tableName;<br/>
-delete from seq;<br/>
-update sqlite_sequence set seq=0;<br/>
-</code></pre>
-<h3 class="bt">取得表信息</h3>
-<pre class="line-numbers"><code class="language-sql">select * from sqlite_master;<br/>
-</code></pre>
-<h3 class="bt">取得字段信息</h3>
-<pre class="line-numbers"><code class="language-sql">PRAGMA table_info(表名);<br/>
-</code></pre>
-<br/>
-<br/>
-<div class="title_right"><a class="in-table" href="16050600.html">阅读全部</a></div><div id="split-line"></div>
+<div class="title_right"><a class="in-table" href="16050601.html">阅读全部</a></div><div id="split-line"></div>
 <div style="width:100%;text-align:center;"><span id="page" class="normal" onclick="location.href='2.html'">Older&nbsp;&gt;</span></div>
 </div>
 </div>
