@@ -23,7 +23,12 @@
 </div>
 <div id="main">
 <div id="content" class="content">
-<div class="title"><a class="in-table" href="16050600.html">Sqlite的事务，Truncate和表信息</a></div>(这是一篇以前博客上的笔记，现在转发到这里)<br/>
+<div class="title"><a class="in-table" href="16050601.html">新键盘</a></div>今天买了把新键盘。仍然是国产的87键，青轴。之所以买它是因为两点原因：1、样子还算很喜欢；2、蓝牙。机械键盘的选择有很多，但是加上“蓝牙”这个要求后，选择的余地就缩小了不少。今天到的这把还算满意吧，第一次连OSX系统时不知道为什么command键（也就是WIN键）失灵了，断开重连就好了。现在用了一晚上再也没出问题。附送的USB线是充电用的，听说充满后能使用600小时。也不知道得充多久能满。<br/>
+<img src="img/new_kb.jpg" alt="new_kb" class="thumb"/>
+<br/>
+<br/>
+<br/>
+<div class="title_right"><a class="in-table" href="16050601.html">阅读全部</a></div><div id="split-line"></div><div class="title"><a class="in-table" href="16050600.html">Sqlite的事务，Truncate和表信息</a></div>(这是一篇以前博客上的笔记，现在转发到这里)<br/>
 <h3 class="bt">事务</h3>
 只要写在begin和commit中就行了。在PHP中我是这么写的：<br/>
 <pre class="line-numbers"><code class="language-php">$conn->query("BEGIN")；<br/>
@@ -153,10 +158,7 @@ OK<br/>
 "3"<br/>
 127.0.0.1:1010> decrby faluo 2<br/>
 (integer) 1<br/>
-</code></pre><div class="title_right"><a class="in-table" href="16050401.html">阅读全部</a></div><div id="split-line"></div><div class="title"><a class="in-table" href="16050400.html">homebrew安装phpredis</a></div>(这是一篇以前博客上的笔记，现在转发到这里)<br/>
-昨天(15-10-26)在OSX下用homebrew安装phpredis，第一次接触这两个项目，边学边用。有个小地方卡了一下：我的系统是最新的10.11，PHP版本是5.5.30。在安装的最后，需要把redis.so拷到<span style="padding:3px;border:0px;border-style:solid;border-color:#B1B3BB;background-color:#EEEEEE;color:#990033;width:auto;">/usr/lib/php/extensions/no-debug-non-zts-20121212</span>目录下（至少我机器上是这个目录）。可是我无论是用<span style="padding:3px;border:0px;border-style:solid;border-color:#B1B3BB;background-color:#EEEEEE;color:#990033;width:auto;">cp</span>还是<span style="padding:3px;border:0px;border-style:solid;border-color:#B1B3BB;background-color:#EEEEEE;color:#990033;width:auto;">sudo cp</span>，都会提示Operation not permitted。于是网上搜了一会，看到了这篇博客，才解决了问题：<a href="http://hello1010.com/osx-trouble-shooting" target="_blank" class="on-search" rel="nofollow">OSX常见问题列表(持续更新中...)</a>。正如这篇博客上所说，需要<span style="padding:3px;border:0px;border-style:solid;border-color:#B1B3BB;background-color:#EEEEEE;color:#990033;width:auto;">先关闭SIP</span>，之后再开启。操作的方法：<span style="padding:3px;border:0px;border-style:solid;border-color:#B1B3BB;background-color:#EEEEEE;color:#990033;width:auto;">重启机器->按command+R->进入终端->输入csrutil disable就可以了(开启的命令是csrutil enable)</span>。所以在安装之前，先把SIP关闭吧。<br/>
-<br/>
-<div class="title_right"><a class="in-table" href="16050400.html">阅读全部</a></div><div id="split-line"></div>
+</code></pre><div class="title_right"><a class="in-table" href="16050401.html">阅读全部</a></div><div id="split-line"></div>
 <div style="width:100%;text-align:center;"><span id="page" class="normal" onclick="location.href='index.html'">&lt;&nbsp;Newer</span>&nbsp;&nbsp;<span id="page" class="normal" onclick="location.href='3'">Older&nbsp;&gt;</span></div>
 </div>
 </div>
