@@ -25,22 +25,23 @@
 <div id="content" class="content">
 <div class="title"><a class="in-table" href="16121000.html">字符串相似度计算</a></div>字符串相似度计算非常有用。我刚刚在自己的番组管理工具中加入了它。这样当我在添加新的动画或电影名时，它就能帮我去数据库中找找有没有相似度高的名字，以防我把同一个番组用不同的名字再填一遍。<br/>
 <br/>
-我这里用到的算法是Levenshtein，它又叫“编辑距离”算法。<a href="http://baike.baidu.com/view/2020247.htm" target="_blank" class="on-search" rel="nofollow">百度上</a>有一堆介绍它的文章。它是俄国科学家Vladimir Levenshtein在1965年发明的。如果你会PHP的话，那么从4.0.1版本起有一个叫<span style="color:#FF0000;font-weight:bold;">levenshtein</span>的函数，你可以直接使用它。详细的API介绍在<a href="http://php.net/manual/en/function.levenshtein.php" target="_blank" class="on-search" rel="nofollow">这里</a>。我这里只是想把它用自己的大白话再说一遍。<br/>
+我这里用到的算法是Levenshtein，它又叫“编辑距离”算法，是俄国科学家Vladimir Levenshtein在1965年发明的。<a href="http://baike.baidu.com/view/2020247.htm" target="_blank" class="on-search" rel="nofollow">百度上</a>有一堆介绍它的文章。如果你会PHP的话，那么从4.0.1版本起有一个叫<span style="color:#FF0000;font-weight:bold;">levenshtein()</span>的函数可供你直接使用。详细的API介绍在<a href="http://php.net/manual/en/function.levenshtein.php" target="_blank" class="on-search" rel="nofollow">这里</a>。我这里只是想把它用自己的大白话再说一遍，并且在后面尝试给出JAVA代码。<br/>
+<br/>
 我们现在有两个字符串（没错，我是死肥宅）：<br/>
 <pre class="line-numbers"><code class="language-java">String strA = "路人女主的育成法";<br/>
 String strB = "路人女主的养成方法";<br/>
 </code></pre>
-首先把把它们放到表格中并且编号。如图。<br/>
+首先把它们放到表格中并且编号。如图。<br/>
 <img src="img/16121000_01.png" alt="01" class="thumb"/>
 接下来，我们要在表格中填满数字，填满后，相似度也就可以算出来了。<br/>
 <img src="img/16121000_03.png" alt="03" class="thumb"/>
 那么，这堆数是怎么算出来的？<br/>
 <br/>
-先来看图中黄色单元格，格子上面、左面和左上的数字分别是1，1，0。再来看这个格子上面和左面的字符，都是“路”字，所以我们把上面和左面的数字+1，左上角的数字不变。于是现在我们得到了2，2，0这三个数字。把这三个数字中最小的一个，也就是0写在单元格中。这个格子就算填完了。<br/>
+先来看图中黄色单元格，格子上面、左面和左上的数字分别是1，1，0。再来看这个格子上面和左面的字符，都是“路”字，所以我们把上面和左面的数字加1，左上角的数字不变。于是现在我们得到了2，2，0这三个数字。把这三个数字中最小的一个，也就是0写在单元格中。这个格子就算填完了。<br/>
 <br/>
-再接下来看右面的蓝色格式，它的上、左和左上也有3个数字（其中左面的数字是我们刚刚填上的），分别是2、0、1，再来看格子上面和左面对应的字符，分别是“人”和“路”字。是两个不同的字符，所以我们把这3个数字分别+1，就得到了3、1、2这3个数字。把这3个数字中最小的一个，也就是1填到蓝格子中就算完成了。<br/>
+再接下来看右面的蓝色格式，它的上、左和左上也有三个数字（其中左面的数字是我们刚刚填上的），分别是2、0、1，再来看格子上面和左面对应的字符，分别是“人”和“路”字，是两个不同的字符。所以我们把这三个数字分别加1，就得到了3、1、2这三个数字。把这三个数字中最小的一个，也就是1填到蓝格子中就算完成了。<br/>
 <br/>
-以此类推，就可以把整个表格填完。这些数字代表什么？代表一个字符变成另一个字符串的代价（距离）。代价越高，两个字符串间的相似度就越低。<br/>
+以此类推，就可以把整个表格填完。这些数字代表什么？代表一个字符变成另一个字符串的代价（距离）。<span style="color:#FF0000;font-weight:bold;">代价越高，两个字符串间的相似度就越低。</span>
 <br/>
 我知道你是不太明白。看下面这张图。<br/>
 <img src="img/16121000_04.png" alt="04" class="thumb"/>
@@ -52,7 +53,36 @@ String strB = "路人女主的养成方法";<br/>
 <br/>
 <span style="color:#FF0000;font-weight:bold;">相似度=1-右下角的数字/两个字符串中最长串的字符数。</span>
 <br/>
-在这个例子中，右下角的数字是2，最长的字符串长度是9（左面的那个），相似度=1-2/9=0.78。原理懂了，代码也就不难写了。<br/>
+在这个例子中，右下角的数字是2，最长的字符串长度是9（左面的那个），<span style="color:#FF0000;font-weight:bold;">相似度=1-2/9=0.78</span>。原理懂了，代码也就不难写了。下面是我写的代码，因为本人水平比较渣，所以简单看看就好：<br/>
+<pre class="line-numbers"><code class="language-java">	public static int calcLevenshtein(String strA, String strB) {<br/>
+		char[] cStrA = strA.toCharArray();<br/>
+		char[] cStrB = strB.toCharArray();<br/>
+		int[][] resultArray = new int[cStrA.length + 1][cStrB.length + 1];<br/>
+		// 初始化矩阵<br/>
+		for (int i = 0; i < resultArray.length; ++i) {<br/>
+			resultArray[i][0] = i;<br/>
+		}<br/>
+		for (int j = 0; j < resultArray[0].length; ++j) {<br/>
+			resultArray[0][j] = j;<br/>
+		}<br/>
+		// 开始计算距离<br/>
+		for (int i = 0; i < cStrA.length; ++i) {<br/>
+			for (int j = 0; j < cStrB.length; ++j) {<br/>
+				resultArray[i + 1][j + 1] = Math.min(Math.min(<br/>
+						resultArray[i + 1][j] + 1, resultArray[i][j + 1] + 1),<br/>
+						resultArray[i][j] + (cStrA[i] == cStrB[j] ? 0 : 1));<br/>
+			}<br/>
+		}<br/>
+		float r = 1<br/>
+				- resultArray[resultArray.length - 1][resultArray[0].length - 1]<br/>
+				* 1f / Math.max(cStrA.length, cStrB.length);<br/>
+		return (int) (r * 100);<br/>
+	}<br/>
+</code></pre>
+<br/>
+<br/>
+<br/>
+<br/>
 <br/>
 <div class="title_right"><a class="in-table" href="16121000.html">阅读全部</a></div><div id="split-line"></div><div class="title"><a class="in-table" href="16110500.html">vsCode+PHPDebug插件+XDebug</a></div>和vsCode比起来，Eclipse还是显得有些臃肿，所以平时用vsCode的时间比较多。虽然不奢望它的功能和IDE一样强大，但是希望至少要有debug功能才够方便。vsCode中正好有这样的插件，就叫<span style="padding:3px;border:0px;border-style:solid;border-color:#B1B3BB;background-color:#EEEEEE;color:#990033;width:auto;">PHP Debug</span>。在插件中心就可以搜到它了。<br/>
 <img src="img/16110500_Adapter.png" alt="Adapter" class="thumb"/>
