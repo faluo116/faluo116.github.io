@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8"/>
+		<title>mfu_css_tools</title>
+		<link href="anime.css" rel="stylesheet"/>
+        <style type="text/css">
+            @font-face{
+                font-family:anime;
+                src:url('anime.otf');
+            }
+            div#block{
+                padding-top:36px;
+                line-height:30px;
+                font-family:anime;
+            }
+            div#main{
+                background-color:#FFFFFF;
+                width:900px;
+                height:auto;
+                margin-left:auto;
+                margin-right:auto;
+                line-height:30px;
+                font-family:anime;
+            }
+            b{
+                color:#FF33CC;
+                font-family:anime;
+            }
+        </style>
+	</head>
+	<body style="background-color:#E2E2E2;">
+        <div id="main">
+            <div style="padding:10px 20px 10px 20px;">
+                <div id ="title" style="font-family:anime;">mfu_css_tools</div>
+                <div id="block" style="font-size:20px;line-height:36px;">
+                    <div><a href="#title" class="web">1、标题</a></div>
+                    <div><a href="#link" class="web">2、链接</a></div>
+                    <div><a href="#text" class="web">3、文本框</a></div>
+                    <div><a href="#button" class="web">4、按钮</a></div>
+                    <div><a href="#spn_type" class="web">5、类型块</a></div>
+                    <div><a href="#table" class="web">6、表格</a></div>
+                    <div><a href="#line" class="web">7、分割线</a></div>
+                </div>
+                <div id="block">
+                    <a name="title"></a>
+                    <div id ="title" style="font-size:20px;font-family:anime;">#1、标题</div>
+                    id选择器<br/>
+                    <b>示例：</b><br/>
+                    &lt;div id ="title"&gt;这是标题&lt;/div&gt;<br/>
+                    <b>备注：</b><br/>
+                    粗体，字号26。<br/>
+                </div>
+                <div id="block">
+                    <a name="link"></a>
+                    <div id ="title" style="font-size:20px;font-family:anime;">#2、链接</div>
+                    类选择器<br/>
+                    <b>示例：</b><br/>
+                    &lt;a href="#" class="web"&gt;这是链接&lt;/a&gt;<br/>
+                    <a href="#" class="web">这是链接</a><br/>
+                    <b>备注：</b><br/>
+                    没有指定字号。<br/>
+                </div>
+                <div id="block">
+                    <a name="text"></a>
+                    <div id ="title" style="font-size:20px;font-family:anime;">#3、文本框</div>
+                    类选择器<br/>
+                    <b>示例：</b><br/>
+                    &lt;input type="text" class="inbox" text="这是一个文本框" /&gt;<br/>
+                    <input type="text" class="inbox" text="这是一个文本框" /><br/>
+                    <b>备注：</b><br/>
+                    灰色边框，扁平类型。字20px左移6px，宽300高30。<br/>
+                </div>
+                <div id="block">
+                    <a name="button"></a>
+                    <div id ="title" style="font-size:20px;font-family:anime;">#4、按钮</div>
+                    类选择器<br/>
+                    <b>示例：</b><br/>
+                    &lt;button class="btn" onclick="alert('I don\'t money!')"&gt;普通按钮&lt;/button&gt;<br/>
+                    <button class="btn" onclick="alert('I don\'t money!')">普通按钮</button><br/>
+                    &lt;button class="btn_submit" onclick="alert('I don\'t money!')"&gt;提交按钮&lt;/button&gt;<br/>
+                    <button class="btn_submit" onclick="alert('I don\'t money!')">提交按钮</button><br/>
+                    &lt;button class="btn_warning" onclick="alert('I don\'t money!')"&gt;警示按钮&lt;/button&gt;<br/>
+                    <button class="btn_warning" onclick="alert('I don\'t money!')">警示按钮</button><br/>
+                    <b>备注：</b><br/>
+                    按用途分为三种：普通按钮，提交(submit)按钮和红色的警示按钮。一般直接用即可，不需要改。<br/>
+                </div>
+                <div id="block">
+                    <a name="spn_type"></a>
+                    <div id ="title" style="font-size:20px;font-family:anime;">#5、类型块</div>
+                    类选择器<br/>
+                    <b>示例：</b><br/>
+                    &lt;span class="type_tab" style="background-color:#0F00FF;"&gt;Movie&lt;/span&gt;<br/>
+                    <span class="type_tab" style="background-color:#0F00FF;">Movie</span><br/>
+                    <b>备注：</b><br/>
+                    用来突出标注类型。颜色需要另行指定。因为默认字体都是白色的，所以大多需要指定一个醒目的深色调。<br/>
+                </div>
+                <div id="block">
+                    <a name="table"></a>
+                    <div id ="title" style="font-size:20px;font-family:anime;">#6、表格</div>
+                    默认示例，不需要指定选择器<br/>
+                    <b>示例：</b><br/>
+                        &lt;table&gt;<br/>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&lt;tr&gt;<br/>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;th&gt;测试字段一&lt;/th&gt;<br/>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;th&gt;测试字段二&lt;/th&gt;<br/>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;th&gt;测试字段三&lt;/th&gt;<br/>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&lt;/tr&gt;<br/>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&lt;tr&gt;<br/>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;td&gt;行1.1&lt;/td&gt;<br/>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;td&gt;行1.2&lt;/td&gt;<br/>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;td&gt;行1.3&lt;/td&gt;<br/>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&lt;/tr&gt;<br/>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&lt;tr&gt;<br/>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;td&gt;行2.1&lt;/td&gt;<br/>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;td&gt;行2.2&lt;/td&gt;<br/>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;td&gt;行2.3&lt;/td&gt;<br/>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&lt;/tr&gt;<br/>
+                        &lt;/table&gt;<br/>
+                    <table style="width:65%;">
+                        <tr>
+                            <th>测试字段一</th>
+                            <th>测试字段二</th>
+                            <th>测试字段三</th>
+                        </tr>
+                        <tr>
+                            <td>行1.1</td>
+                            <td>行1.2</td>
+                            <td>行1.3</td>
+                        </tr>
+                        <tr>
+                            <td>行2.1</td>
+                            <td>行2.2</td>
+                            <td>行2.3</td>
+                        </tr>
+                    </table>
+                    <b>备注：</b><br/>
+                    导入CSS后，直接写表格默认的语法即可。会生成一个灰色风格的表格。<br/>
+                </div>
+                <div id="block">
+                    <a name="line"></a>
+                    <div id ="title" style="font-size:20px;font-family:anime;">#7、分割线</div>
+                    id选择器<br/>
+                    <b>示例：</b><br/>
+                    &lt;div id ="split"&gt;&lt;/div&gt;<br/>
+                    <div id ="split"></div>
+                    <b>备注：</b><br/>
+                    灰色，左右留有余白的分割线。<br/>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
