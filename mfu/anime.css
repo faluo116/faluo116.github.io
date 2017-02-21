@@ -34,12 +34,13 @@ th{
 tr:hover{
     background-color:#F1F1F1;
 }
-#split{
-    margin-left:1px;
+hr{
+    margin-left:6px;
     margin-right:6px;
     margin-top:3px;
     margin-bottom:3px;
-    border-bottom: 1px solid #BEC0C2;
+    border-top:1px solid #BEC0C2;
+    border-bottom:1px solid #BEC0C2;
 }
 h1, h2, h3, h4, h5, h6{
     clear:both;
@@ -90,11 +91,14 @@ a:hover{
 .btn_warning{
     margin-left:3px;
     border:1px solid #CCCCCC;
-    background-color:#FF0000;
+    background-color:#FF3300;
     color:#FFFFFF;
     font-size:1em;
     padding:6px 10px 6px 10px;
     cursor:pointer;
+}
+.btn_warning:hover{
+    background-color:#CC3300;
 }
 .btn_submit{
     margin-left:3px;
@@ -105,6 +109,9 @@ a:hover{
     font-style:bold;
     padding:6px 10px 6px 10px;
     cursor:pointer;
+}
+.btn_submit:hover{
+    background-color:#CC6633;
 }
 input.inbox{
     width:300px;
@@ -122,6 +129,6 @@ input.inbox{
 }
 blockquote{
     border-left:2px solid #FF0000;
-    padding-left:6px;
+    padding-left:20px;
     background-color:#F1F1F1;
 }
