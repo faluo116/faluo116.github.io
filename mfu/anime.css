@@ -43,7 +43,6 @@ hr{
     border-bottom:1px solid #BEC0C2;
 }
 h1, h2, h3, h4, h5, h6{
-    clear:both;
     font-weight:bold;
     font-family:华文细黑,serif;
 }
@@ -77,7 +76,7 @@ a:hover{
     color:#F05A28;
     text-decoration:none;
 }
-.btn{
+.mfu_btn{
     margin-left:3px;
     border:1px solid #CCCCCC;
     background-color:#E2E2E2;
@@ -85,10 +84,10 @@ a:hover{
     padding:6px 10px 6px 10px;
     cursor:pointer;
 }
-.btn:hover{
+.mfu_btn:hover{
     background-color:#CCCCCC;
 }
-.btn_warning{
+.mfu_btn_warning{
     margin-left:3px;
     border:1px solid #CCCCCC;
     background-color:#FF3300;
@@ -97,10 +96,10 @@ a:hover{
     padding:6px 10px 6px 10px;
     cursor:pointer;
 }
-.btn_warning:hover{
+.mfu_btn_warning:hover{
     background-color:#CC3300;
 }
-.btn_submit{
+.mfu_btn_submit{
     margin-left:3px;
     border:1px solid #CCCCCC;
     background-color:#F05A28;
@@ -110,17 +109,17 @@ a:hover{
     padding:6px 10px 6px 10px;
     cursor:pointer;
 }
-.btn_submit:hover{
+.mfu_btn_submit:hover{
     background-color:#CC6633;
 }
-input.inbox{
+input.mfu_inbox{
     width:300px;
     height:30px;
     font-size:1.2em;
     padding-left:6px;
     border:1px solid #CCCCCC;
 }
-.type_tab{
+.mfu_type_tab{
     border-radius:6px;
     font-size:1em;
     padding:6px;
@@ -132,19 +131,26 @@ blockquote{
     padding-left:20px;
     background-color:#F1F1F1;
 }
-.mfu_checkbox{
-    border:1px solid #000000;
+.mfu_ckb{
+    border:1px solid #BBBBBB;
     padding-left:5px;
-    padding-right:5px;
+    padding-right:10px;
     margin-left:2px;
     margin-right:6px;
 }
 input[type="checkbox"]:checked + label {
     background-color:#F05A28;
 }
-.mfu_checkbox:hover{
+.mfu_ckb:hover{
     border:1px solid #F05A28;
 }
 input[type="checkbox"]{
     display:none;
+}
+select{
+    border:1px solid #CCCCCC;
+    font-size:0.8em;
+    width:200px;
+    height:30px;
+    padding:5px 5px 5px 5px;
 }
