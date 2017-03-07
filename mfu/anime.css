@@ -78,14 +78,14 @@ a:hover{
     color:#F05A28;
     text-decoration:none;
 }
-.mfu_btn{
+button{
     border:1px solid #CCCCCC;
     background-color:#E2E2E2;
     font-size:1em;
     padding:6px 10px 6px 10px;
     cursor:pointer;
 }
-.mfu_btn:hover{
+button:hover{
     background-color:#CCCCCC;
 }
 .mfu_btn_warning{
@@ -118,7 +118,7 @@ input[type="text"]{
     padding-left:6px;
     border:1px solid #CCCCCC;
 }
-.small{
+.wdh-100{
     width:100px !important;;
     font-size:0.9em !important;;
 }
@@ -155,5 +155,5 @@ select{
     font-size:0.8em;
     width:200px;
     height:30px;
-    padding:5px 5px 5px 5px;
+    padding:0px 5px 0px 5px;
 }
