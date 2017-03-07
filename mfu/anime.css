@@ -3,7 +3,7 @@
 body{
     background-color:#FFFFFF;
     line-height:30px;
-    margin:3px 3px 3px 3px;
+    margin:10px 10px 10px 10px;
     font-family:Monaco,Andale Mono,Courier New,monospace;
 }
 table{
@@ -13,6 +13,7 @@ table{
     border-collapse:collapse;
     color:#000000;
     line-height:30px;
+    width:100%;
 }
 td{
     border:1px;
@@ -20,6 +21,7 @@ td{
     border-color:#CCCCCC;
     letter-spacing:1px;
     padding:6px;
+    text-align:center;
 }
 th{
     border:1px;
@@ -77,7 +79,6 @@ a:hover{
     text-decoration:none;
 }
 .mfu_btn{
-    margin-left:3px;
     border:1px solid #CCCCCC;
     background-color:#E2E2E2;
     font-size:1em;
@@ -88,7 +89,6 @@ a:hover{
     background-color:#CCCCCC;
 }
 .mfu_btn_warning{
-    margin-left:3px;
     border:1px solid #CCCCCC;
     background-color:#FF3300;
     color:#FFFFFF;
@@ -100,7 +100,6 @@ a:hover{
     background-color:#CC3300;
 }
 .mfu_btn_submit{
-    margin-left:3px;
     border:1px solid #CCCCCC;
     background-color:#F05A28;
     color:#FFFFFF;
@@ -119,6 +118,10 @@ input.mfu_inbox{
     padding-left:6px;
     border:1px solid #CCCCCC;
 }
+input.small{
+    width:100px;
+    font-size:1em;
+}
 .mfu_type_tab{
     border-radius:6px;
     font-size:1em;
@@ -134,7 +137,7 @@ blockquote{
 .mfu_ckb{
     border:1px solid #BBBBBB;
     padding-left:5px;
-    padding-right:10px;
+    padding-right:12px;
     margin-left:2px;
     margin-right:6px;
 }
