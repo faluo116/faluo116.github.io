@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8"/>
+		<title>Demo</title>
+		<link href="../anime.css" rel="stylesheet"/>
+        <script>
+            function selectAll(){
+                var forbidList = document.getElementsByName ("forbid");
+                var all = document.getElementById("mfu_ckb_00");
+                if(all.checked){
+                    for(var i = 0 ; i < forbidList.length ; i++){
+                        forbidList[i].checked = 1;
+                    } 
+                } else {
+                    for(var i = 0 ; i < forbidList.length ; i++){
+                        forbidList[i].checked = 0;
+                    } 
+                }
+            }
+        </script>
+        <style>
+            #form{
+                margin-bottom:10px;
+            }
+        </style>
+	</head>
+	<bod>
+        <div id="form">
+            用户<input type="text" class="mfu_inbox small" placeholder="用户名/ID" />
+            性别<select>
+                    <option value=0>-请选择-</option>
+                    <option value=1>男</option>
+                    <option value=2>女</option>
+                </select>
+            评论数><input type="text" class="mfu_inbox small" placeholder="评论数" />
+            发贴数><input type="text" class="mfu_inbox small" placeholder="发贴数" />
+            <button class="mfu_btn_submit" onclick="alert('自己写AJAX查找吧')">查找</button>
+        </div>
+        <div id="form">
+            <button class="mfu_btn" onclick="alert('嗯。都封了。')">批量封禁</button>
+        </div>
+        <table>
+            <tr>
+                <th><input type="checkbox" id="mfu_ckb_00" onclick="selectAll()"/>
+                    <label for="mfu_ckb_00" class="mfu_ckb"></label></th>
+                <th>用户ID</th>
+                <th>用户名</th>
+                <th>性别</th>
+                <th>连续签到日</th>
+                <th>发贴总数</th>
+                <th>评论总数</th>
+                <th>最后登陆</th>
+                <th>创建时间</th>
+                <th>操作时间</th>
+                <th>操作人员</th>
+                <th>操作</th>
+            </tr>
+            <tr>
+                <td><input type="checkbox" id="mfu_ckb_01" name="forbid" />
+                    <label for="mfu_ckb_01" class="mfu_ckb"></label></td>
+                <td>10001</td>
+                <td>用户1</td>
+                <td>男</td>
+                <td>35</td>
+                <td>230</td>
+                <td>650</td>
+                <td>2017-02-01 15:32</td>
+                <td>2015-08-29 09:55</td>
+                <td>2017-03-03 10:01</td>
+                <td>管理员一</td>
+                <td><a href="#">详情</a>&nbsp;<a href="#">封禁</a></td>
+            </tr>
+            <tr>
+                <td><input type="checkbox" id="mfu_ckb_02" name="forbid" />
+                    <label for="mfu_ckb_02" class="mfu_ckb"></label></td>
+                <td>10002</td>
+                <td>用户2</td>
+                <td>男</td>
+                <td>0</td>
+                <td>120</td>
+                <td>330</td>
+                <td>2017-01-18 11:40</td>
+                <td>2016-06-12 12:00</td>
+                <td>-</td>
+                <td>-</td>
+                <td><a href="#">详情</a>&nbsp;<a href="#">封禁</a></td>
+            </tr>
+            <tr>
+                <td><input type="checkbox" id="mfu_ckb_03" name="forbid" />
+                    <label for="mfu_ckb_03" class="mfu_ckb"></label></td>
+                <td>10003</td>
+                <td>用户3</td>
+                <td>女</td>
+                <td>390</td>
+                <td>549</td>
+                <td>1136</td>
+                <td>2017-02-01 15:32</td>
+                <td>2013-01-01 22:09</td>
+                <td>2017-01-28 11:00</td>
+                <td>管理员三</td>
+                <td><a href="#">详情</a>&nbsp;<a href="#">封禁</a></td>
+            </tr>
+            <tr>
+                <td><input type="checkbox" id="mfu_ckb_04" name="forbid" />
+                    <label for="mfu_ckb_04" class="mfu_ckb"></label></td>
+                <td>10004</td>
+                <td>用户4</td>
+                <td>男</td>
+                <td>217</td>
+                <td>28</td>
+                <td>58</td>
+                <td>2016-03-03 00:14</td>
+                <td>2012-08-29 09:55</td>
+                <td>2017-01-08 15:21</td>
+                <td>管理员二</td>
+                <td><a href="#">详情</a>&nbsp;<a href="#">封禁</a></td>
+            </tr>
+            <tr>
+                <td><input type="checkbox" id="mfu_ckb_05" name="forbid" />
+                    <label for="mfu_ckb_05" class="mfu_ckb"></label></td>
+                <td>10005</td>
+                <td>用户5</td>
+                <td>女</td>
+                <td>139</td>
+                <td>174</td>
+                <td>1320</td>
+                <td>2016-12-24 18:01</td>
+                <td>2013-09-13 03:01</td>
+                <td>-</td>
+                <td>-</td>
+                <td><a href="#">详情</a>&nbsp;<a href="#">封禁</a></td>
+            </tr>
+            <tr>
+                <td><input type="checkbox" id="mfu_ckb_06" name="forbid" />
+                    <label for="mfu_ckb_06" class="mfu_ckb"></label></td>
+                <td>10006</td>
+                <td>用户6</td>
+                <td>女</td>
+                <td>190</td>
+                <td>12</td>
+                <td>553</td>
+                <td>2017-02-20 16:14</td>
+                <td>2013-12-31 22:00</td>
+                <td>2017-02-10 12:19</td>
+                <td>管理员二</td>
+                <td><a href="#">详情</a>&nbsp;<a href="#">封禁</a></td>
+            </tr>
+            <tr>
+                <td><input type="checkbox" id="mfu_ckb_07" name="forbid" />
+                    <label for="mfu_ckb_07" class="mfu_ckb"></label></td>
+                <td>10007</td>
+                <td>用户7</td>
+                <td>女</td>
+                <td>0</td>
+                <td>5</td>
+                <td>46</td>
+                <td>2017-03-06 18:03</td>
+                <td>2016-11-17 17:22</td>
+                <td>-</td>
+                <td>-</td>
+                <td><a href="#">详情</a>&nbsp;<a href="#">封禁</a></td>
+            </tr>
+            <tr>
+                <td><input type="checkbox" id="mfu_ckb_08" name="forbid" />
+                    <label for="mfu_ckb_08" class="mfu_ckb"></label></td>
+                <td>10008</td>
+                <td>用户8</td>
+                <td>男</td>
+                <td>68</td>
+                <td>95</td>
+                <td>604</td>
+                <td>2016-11-06 08:45</td>
+                <td>2011-07-31 09:20</td>
+                <td>2017-03-03 10:01</td>
+                <td>管理员二</td>
+                <td><a href="#">详情</a>&nbsp;<a href="#">封禁</a></td>
+            </tr>
+            <tr>
+                <td><input type="checkbox" id="mfu_ckb_09" name="forbid" />
+                    <label for="mfu_ckb_09" class="mfu_ckb"></label></td>
+                <td>10009</td>
+                <td>用户9</td>
+                <td>女</td>
+                <td>22</td>
+                <td>89</td>
+                <td>120</td>
+                <td>2017-02-01 15:32</td>
+                <td>2016-05-01 13:07</td>
+                <td>2016-10-13 17:56</td>
+                <td>管理员三</td>
+                <td><a href="#">详情</a>&nbsp;<a href="#">封禁</a></td>
+            </tr>
+            <tr>
+                <td><input type="checkbox" id="mfu_ckb_10" name="forbid" />
+                    <label for="mfu_ckb_10" class="mfu_ckb"></label></td>
+                <td>10010</td>
+                <td>用户10</td>
+                <td>男</td>
+                <td>490</td>
+                <td>489</td>
+                <td>2350</td>
+                <td>2017-03-07 21:40</td>
+                <td>2009-11-03 00:16</td>
+                <td>2016-12-12 11:26</td>
+                <td>管理员三</td>
+                <td><a href="#">详情</a>&nbsp;<a href="#">封禁</a></td>
+            </tr>
+        </table>
+    </body>
+</html>
