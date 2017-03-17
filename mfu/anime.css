@@ -81,7 +81,7 @@ a:hover{
 button{
     border:1px solid #CCCCCC;
     background-color:#E2E2E2;
-    font-size:1em;
+    font-size:0.9em;
     padding:6px 10px 6px 10px;
     cursor:pointer;
 }
@@ -92,7 +92,7 @@ button:hover{
     border:1px solid #CCCCCC;
     background-color:#FF3300;
     color:#FFFFFF;
-    font-size:1em;
+    font-size:0.9em;
     padding:6px 10px 6px 10px;
     cursor:pointer;
 }
@@ -103,7 +103,7 @@ button:hover{
     border:1px solid #CCCCCC;
     background-color:#F05A28;
     color:#FFFFFF;
-    font-size:1em;
+    font-size:0.9em;
     font-style:bold;
     padding:6px 10px 6px 10px;
     cursor:pointer;
@@ -112,15 +112,15 @@ button:hover{
     background-color:#CC6633;
 }
 input[type="text"]{
-    width:300px;
+    width:100px;
     height:30px;
-    font-size:1.2em;
+    font-size:1.0em;
     padding-left:6px;
     border:1px solid #CCCCCC;
 }
-.wdh-100{
-    width:100px !important;;
-    font-size:0.9em !important;;
+.wdh-200{
+    width:200px !important;
+    font-size:0.9em !important;
 }
 .mfu_type_tab{
     border-radius:6px;
@@ -142,7 +142,7 @@ blockquote{
     margin-right:6px;
 }
 input[type="checkbox"]:checked + label {
-    background-color:#F05A28;
+    background:#F05A28;
 }
 .mfu_ckb:hover{
     border:1px solid #F05A28;
@@ -153,7 +153,7 @@ input[type="checkbox"]{
 select{
     border:1px solid #CCCCCC;
     font-size:0.8em;
-    width:200px;
+    width:100px;
     height:30px;
     padding:0px 5px 0px 5px;
 }
