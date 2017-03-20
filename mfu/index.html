@@ -30,32 +30,31 @@
         </style>
 	</head>
 	<body style="background-color:#E2E2E2;">
-        <a href="https://github.com/faluo116"><img style="position: fixed; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/a6677b08c955af8400f44c6298f40e7d19cc5b2d/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f677261795f3664366436642e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_gray_6d6d6d.png"></a>
         <div id="main">
             <div style="padding:10px 20px 10px 20px;">
                 <h1 style="font-family:anime;">mfu_css_tool</h1>
                 <div id="block" style="line-height:36px;">
-                    <div><a href="#title">01、标题</a></div>
-                    <div><a href="#link">02、链接</a></div>
-                    <div><a href="#text">03、文本框</a></div>
-                    <div><a href="#button">04、按钮</a></div>
-                    <div><a href="#spn_type">05、类型块</a></div>
-                    <div><a href="#table">06、表格</a></div>
-                    <div><a href="#line">07、分割线</a></div>
-                    <div><a href="#quote">08、引用</a></div>
-                    <div><a href="#ck">09、checkbox</a></div>
-                    <div><a href="#sel">10、select</a></div>
+                    <div><a href="#title">1、标题</a></div>
+                    <div><a href="#link">2、链接</a></div>
+                    <div><a href="#text">3、文本框</a></div>
+                    <div><a href="#button">4、按钮</a></div>
+                    <div><a href="#spn_type">5、类型块</a></div>
+                    <div><a href="#table">6、表格</a></div>
+                    <div><a href="#line">7、分割线</a></div>
+                    <div><a href="#quote">8、引用</a></div>
                 </div>
                 <div id="block">
                     <a name="title"></a>
                     <h5 style="font-family:anime;">#1、标题</h5>
                     <b>示例：</b><br/>
-                    &lt;h1&gt;H1标题&lt;/h1&gt;
-                    <h1>H1标题</h1>
-                    &lt;h3&gt;H3标题&lt;/h3&gt;
-                    <h3>H3标题</h3>
-                    &lt;h6&gt;H6标题&lt;/h6&gt;
-                    <h6>H6标题</h6>
+                    &lt;h1&gt;H1标题&lt;/h1&gt;<br/>
+                    <h1>H1标题</h1><br/>
+                    &lt;h3&gt;H3标题&lt;/h3&gt;<br/>
+                    <h3>H3标题</h3><br/>
+                    &lt;h6&gt;H6标题&lt;/h6&gt;<br/>
+                    <h6>H6标题</h6><br/>
+                    <b>备注：</b><br/>
+                    无。<br/>
                 </div>
                 <div id="block">
                     <a name="link"></a>
@@ -63,35 +62,41 @@
                     <b>示例：</b><br/>
                     &lt;a href="#" &gt;这是链接&lt;/a&gt;<br/>
                     <a href="#">这是链接</a><br/>
+                    <b>备注：</b><br/>
+                    没有指定字号。<br/>
                 </div>
                 <div id="block">
                     <a name="text"></a>
                     <h5 style="font-family:anime;">#3、文本框</h5>
                     <b>示例：</b><br/>
-                    &lt;input type="text" placeholder="这是一个文本框" /&gt;<br/>
-                    <input type="text" placeholder="这是一个文本框" /><br/>
+                    &lt;input type="text" class="inbox" text="这是一个文本框" /&gt;<br/>
+                    <input type="text" class="inbox" text="这是一个文本框" /><br/>
+                    <b>备注：</b><br/>
+                    灰色边框，扁平类型。字1.2em左移6px，宽300高30。<br/>
                 </div>
                 <div id="block">
                     <a name="button"></a>
                     <h5 style="font-family:anime;">#4、按钮</h5>
                     <b>示例：</b><br/>
-                    &lt;button onclick="alert('I don\'t money!')"&gt;普通按钮&lt;/button&gt;<br/>
-                    <button onclick="alert('I don\'t money!')">普通按钮</button><br/>
-                    &lt;button class="mfu_btn_submit" onclick="alert('I don\'t money!')"&gt;提交按钮&lt;/button&gt;<br/>
-                    <button class="mfu_btn_submit" onclick="alert('I don\'t money!')">提交按钮</button><br/>
-                    &lt;button class="mfu_btn_warning" onclick="alert('I don\'t money!')"&gt;警示按钮&lt;/button&gt;<br/>
-                    <button class="mfu_btn_warning" onclick="alert('I don\'t money!')">警示按钮</button><br/>
+                    &lt;button class="btn" onclick="alert('I don\'t money!')"&gt;普通按钮&lt;/button&gt;<br/>
+                    <button class="btn" onclick="alert('I don\'t money!')">普通按钮</button><br/>
+                    &lt;button class="btn_submit" onclick="alert('I don\'t money!')"&gt;提交按钮&lt;/button&gt;<br/>
+                    <button class="btn_submit" onclick="alert('I don\'t money!')">提交按钮</button><br/>
+                    &lt;button class="btn_warning" onclick="alert('I don\'t money!')"&gt;警示按钮&lt;/button&gt;<br/>
+                    <button class="btn_warning" onclick="alert('I don\'t money!')">警示按钮</button><br/>
+                    <b>备注：</b><br/>
+                    按用途分为三种：普通按钮，提交(submit)按钮和红色的警示按钮。一般直接用即可，不需要改。<br/>
                 </div>
                 <div id="block">
                     <a name="spn_type"></a>
                     <h5 style="font-family:anime;">#5、类型块</h5>
                     <b>示例：</b><br/>
-                    &lt;span class="mfu_type_tab" style="background-color:#0F00FF;"&gt;Movie&lt;/span&gt;<br/>
-                    <span class="mfu_type_tab" style="background-color:#0F00FF;">Movie</span><br/>
-                    &lt;span class="mfu_type_tab" style="background-color:#FF0000;"&gt;TV&lt;/span&gt;<br/>
-                    <span class="mfu_type_tab" style="background-color:#FF0000;">TV</span><br/>
-                    &lt;span class="mfu_type_tab" style="background-color:#009900;"&gt;OVA&lt;/span&gt;<br/>
-                    <span class="mfu_type_tab" style="background-color:#009900;">OVA</span><br/><br/>
+                    &lt;span class="type_tab" style="background-color:#0F00FF;"&gt;Movie&lt;/span&gt;<br/>
+                    <span class="type_tab" style="background-color:#0F00FF;">Movie</span><br/>
+                    &lt;span class="type_tab" style="background-color:#FF0000;"&gt;TV&lt;/span&gt;<br/>
+                    <span class="type_tab" style="background-color:#FF0000;">TV</span><br/>
+                    &lt;span class="type_tab" style="background-color:#009900;"&gt;OVA&lt;/span&gt;<br/>
+                    <span class="type_tab" style="background-color:#009900;">OVA</span><br/><br/>
                     <b>备注：</b><br/>
                     用来突出标注类型。颜色需要另行指定。因为默认字体都是白色的，所以大多需要指定一个醒目的深色调。<br/>
                 </div>
@@ -140,55 +145,21 @@
                     <a name="line"></a>
                     <h5 style="font-family:anime;">#7、分割线</h5>
                     <b>示例：</b><br/>
-                    &lt;hr/&gt;<br/>
-                    <hr/>
+                    &lt;div id ="split"&gt;&lt;/div&gt;<br/>
+                    <div id ="split"></div>
+                    <b>备注：</b><br/>
+                    灰色，左右留有余白的分割线。<br/>
                 </div>
                 <div id="block">
                     <a name="quote"></a>
                     <h5 style="font-family:anime;">#8、引用</h5>
                     <b>示例：</b><br/>
                     &lt;blockquote&gt;这里是引用。&lt;/blockquote&gt;<br/>
-                    <blockquote>
-                        <p>
-                            编辑距离（Edit Distance），又称Levenshtein距离，是指两个字串之间，由一个转成另一个所需的最少编辑操作次数。
-                            许可的编辑操作包括将一个字符替换成另一个字符，插入一个字符，删除一个字符。
-                            一般来说，编辑距离越小，两个串的相似度越大。
-                        </p>
-                    </blockquote>
-                </div>
-                <div id="block">
-                    <a name="ck"></a>
-                    <h5 style="font-family:anime;">#9、checkbox</h5>
-                    <b>示例：</b><br/>
-                    &lt;input type="checkbox" id="mfu_ckb_01" /&gt;<br/>
-                    &lt;label for="mfu_ckb_01" class="mfu_ckb"&gt;&lt;/label&gt;自绘checkbox01<br/>
-                    &lt;input type="checkbox" id="mfu_ckb_02" checked /&gt;<br/>
-                    &lt;label for="mfu_ckb_02" class="mfu_ckb"&gt;&lt;/label&gt;自绘checkbox02<br/>
-                    <input type="checkbox" id="mfu_ckb_01" />
-                    <label for="mfu_ckb_01" class="mfu_ckb"></label>自绘checkbox01<br/>
-                    <input type="checkbox" id="mfu_ckb_02" checked />
-                    <label for="mfu_ckb_02" class="mfu_ckb"></label>自绘checkbox02<br/>
-                </div>
-                <div id="block">
-                    <a name="sel"></a>
-                    <h5 style="font-family:anime;">#10、select</h5>
-                    <b>示例：</b><br/>
-                    &lt;select&gt;<br/>
-                    &nbsp;&nbsp;&nbsp;&nbsp;&lt;option value=0&gt;-请选择-&lt;/option&gt;<br/>
-                    &nbsp;&nbsp;&nbsp;&nbsp;&lt;option value=1&gt;上架&lt;/option&gt;<br/>
-                    &nbsp;&nbsp;&nbsp;&nbsp;&lt;option value=2&gt;下架&lt;/option&gt;<br/>
-                    &lt;/select&gt;<br/>
-                    <select>
-                    <option value=0>-请选择-</option>
-                    <option value=1>上架</option>
-                    <option value=2>下架</option>
-                    </select>
-                    <br/>
+                    <blockquote>这里是引用。</blockquote>
                     <b>备注：</b><br/>
-                    导入CSS后，直接写默认的语法即可。<br/>
+                    在原来的blockquote标签基础上加了左边框和底色。<br/>
                 </div>
             </div>
         </div>
     </body>
-    <script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1255299937'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s95.cnzz.com/z_stat.php%3Fid%3D1255299937%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));</script>
 </html>
