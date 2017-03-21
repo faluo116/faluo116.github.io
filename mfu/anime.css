@@ -3,7 +3,7 @@
 body{
     background-color:#FFFFFF;
     line-height:30px;
-    margin:3px 3px 3px 3px;
+    margin:10px 10px 10px 10px;
     font-family:Monaco,Andale Mono,Courier New,monospace;
 }
 table{
@@ -13,6 +13,7 @@ table{
     border-collapse:collapse;
     color:#000000;
     line-height:30px;
+    width:100%;
 }
 td{
     border:1px;
@@ -20,6 +21,7 @@ td{
     border-color:#CCCCCC;
     letter-spacing:1px;
     padding:6px;
+    text-align:center;
 }
 th{
     border:1px;
@@ -34,15 +36,15 @@ th{
 tr:hover{
     background-color:#F1F1F1;
 }
-#split{
-    margin-left:1px;
+hr{
+    margin-left:6px;
     margin-right:6px;
     margin-top:3px;
     margin-bottom:3px;
-    border-bottom: 1px solid #BEC0C2;
+    border-top:1px solid #BEC0C2;
+    border-bottom:1px solid #BEC0C2;
 }
 h1, h2, h3, h4, h5, h6{
-    clear:both;
     font-weight:bold;
     font-family:华文细黑,serif;
 }
@@ -76,44 +78,51 @@ a:hover{
     color:#F05A28;
     text-decoration:none;
 }
-.btn{
-    margin-left:3px;
+button{
     border:1px solid #CCCCCC;
     background-color:#E2E2E2;
-    font-size:1em;
+    font-size:0.9em;
     padding:6px 10px 6px 10px;
     cursor:pointer;
 }
-.btn:hover{
+button:hover{
     background-color:#CCCCCC;
 }
-.btn_warning{
-    margin-left:3px;
+.mfu_btn_warning{
     border:1px solid #CCCCCC;
-    background-color:#FF0000;
+    background-color:#FF3300;
     color:#FFFFFF;
-    font-size:1em;
+    font-size:0.9em;
     padding:6px 10px 6px 10px;
     cursor:pointer;
 }
-.btn_submit{
-    margin-left:3px;
+.mfu_btn_warning:hover{
+    background-color:#CC3300;
+}
+.mfu_btn_submit{
     border:1px solid #CCCCCC;
     background-color:#F05A28;
     color:#FFFFFF;
-    font-size:1em;
+    font-size:0.9em;
     font-style:bold;
     padding:6px 10px 6px 10px;
     cursor:pointer;
 }
-input.inbox{
-    width:300px;
+.mfu_btn_submit:hover{
+    background-color:#CC6633;
+}
+input[type="text"]{
+    width:100px;
     height:30px;
-    font-size:1.2em;
+    font-size:1.0em;
     padding-left:6px;
     border:1px solid #CCCCCC;
 }
-.type_tab{
+.wdh-200{
+    width:200px !important;
+    font-size:0.9em !important;
+}
+.mfu_type_tab{
     border-radius:6px;
     font-size:1em;
     padding:6px;
@@ -122,6 +131,29 @@ input.inbox{
 }
 blockquote{
     border-left:2px solid #FF0000;
-    padding-left:6px;
+    padding-left:20px;
     background-color:#F1F1F1;
+}
+.mfu_ckb{
+    border:1px solid #BBBBBB;
+    padding-left:5px;
+    padding-right:12px;
+    margin-left:2px;
+    margin-right:6px;
+}
+input[type="checkbox"]:checked + label {
+    background:#F05A28;
+}
+.mfu_ckb:hover{
+    border:1px solid #F05A28;
+}
+input[type="checkbox"]{
+    display:none;
+}
+select{
+    border:1px solid #CCCCCC;
+    font-size:0.8em;
+    width:100px;
+    height:30px;
+    padding:0px 5px 0px 5px;
 }
